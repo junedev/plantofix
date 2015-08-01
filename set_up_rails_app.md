@@ -8,6 +8,7 @@
 + generate controllers or scaffolds for data objects (inlcude session with new create and destoy if using bcrypt)
 + set root route to be mainresouce#index
 + add relationship helpers to models and add has_secure_password for user class
++ set up controllers if not scaffolded
 + add `session[:user_id] = @user.id` to user create controller to have user logged in after sign-up
 + add current_user function etc. to application controller (see code)
 + Fix session controller (see code)
