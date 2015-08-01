@@ -4,6 +4,8 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   helper_method :current_user
+  helper_method :set_current_board
+  helper_method :get_current_board
 
   def current_user
     if session[:user_id]
@@ -33,4 +35,11 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def set_current_board(board)
+    session["current_board"] = board
+  end
+
+  def get_current_board
+    session["current_board"]
+  end
 end

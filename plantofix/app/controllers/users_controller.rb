@@ -35,7 +35,7 @@ class UsersController < ApplicationController
   # Save edited profile to database
   # PATCH/PUT /users/1
   def update
-    @user = User.new(user_params)
+    @user = User.find(params[:id])
     if @user.update(user_params)
       redirect_to @user, notice: 'User was successfully updated.'
     else
@@ -45,7 +45,7 @@ class UsersController < ApplicationController
 
   # DELETE /users/1
   def destroy
-    @user = User.new(user_params)
+    @user = User.find(params[:id])
     @user.destroy
     redirect_to users_url, notice: 'User was successfully destroyed.'
   end

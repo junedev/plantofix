@@ -31,7 +31,7 @@ class BoardsController < ApplicationController
 
   # PATCH/PUT /boards/1
   def update
-    @board = Board.new(board_params)
+    @board = Board.find(params[:id])
     if @board.update(board_params)
       redirect_to board_path, notice: 'Board was successfully updated.'
     else
@@ -41,7 +41,7 @@ class BoardsController < ApplicationController
 
   # DELETE /boards/1
   def destroy
-    @board = Board.new(board_params)
+    @board = Board.find(params[:id])
     @board.destroy
     redirect_to boards_path, notice: 'Board was successfully deleted.'
   end
