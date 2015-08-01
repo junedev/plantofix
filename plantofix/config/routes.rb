@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :tasks
+  resources :lists
   root "static#home"
   resources :boards
   resources :teams
