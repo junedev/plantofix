@@ -1,4 +1,3 @@
 <li> <%= task.name %> 
-<%= link_to "Add", new_task_path(task) %>
 <%= link_to 'Delete', task, method: :delete, data: { confirm: 'Are you sure?' } %>
 </li>

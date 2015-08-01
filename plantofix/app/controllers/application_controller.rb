@@ -36,10 +36,10 @@ class ApplicationController < ActionController::Base
   end
 
   def set_current_board(board)
-    session["current_board"] = board
+    session[:current_board] = board
   end
 
   def get_current_board
-    session["current_board"]
+    session[:current_board]
   end
 end

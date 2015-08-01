@@ -4,10 +4,10 @@ class TasksController < ApplicationController
   # POST /tasks
   def create
     @task = Task.new(task_params)
-    if @task.save
-      redirect_to board_path(get_current_board), notice: 'Task was successfully created.'
+     if @task.save
+      redirect_to "/boards/#{get_current_board["id"]}", notice: 'Task was successfully created.'
     else
-      redirect_to board_path(get_current_board), alert: 'Task could not be created.'
+      redirect_to "/boards/#{get_current_board["id"]}", alert: 'Task could not be created.'
     end
   end
 
@@ -25,7 +25,7 @@ class TasksController < ApplicationController
   def destroy
     @task = Task.find(params[:id])
     @task.destroy
-    redirect_to board_path(get_current_board), notice: 'Task was successfully deleted.'
+    redirect_to "/boards/#{get_current_board["id"]}", notice: 'Task was successfully deleted.'
   end
 
   private
@@ -33,5 +33,4 @@ class TasksController < ApplicationController
     def task_params
       params.require(:task).permit(:name, :list_id, :assignee_id)
     end
-
 end

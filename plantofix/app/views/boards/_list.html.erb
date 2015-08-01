@@ -1,4 +1,36 @@
 <h3><%= list.name %></h3>
+<h3><%= get_current_board.id %></h3>
 <ul class="list_<%= list.id %>">
   <%= render partial: "boards/task", collection: list.tasks %>
+<% @task = Task.new %>
+<%= form_for(@task) do |f| %>
+  <% if @task.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@task.errors.count, "error") %> prohibited this task from being saved:</h2>
+
+      <ul>
+      <% @task.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.text_field :name %>
+  </div>
+  <%= f.hidden_field :list_id, value: list.id %>
+  <%= f.hidden_field :assignee_id, value: current_user.id %>
+  <div class="actions">
+    <%= f.submit "Add task", action: "/tasks", method: :post %>
+  </div>
+<% end %>
+
+
+<!--   <form id="new" action="/tasks" method="POST">
+    <input type="text" name="task[name]">
+    <input type="hidden" name="task[assignee_id]" value="<%= current_user.id %>">
+    <input type="hidden" name="task[list_id]" value="<%= list.id %>">
+    <input type="submit" value="Add task">
+  </form> -->
 </ul>
