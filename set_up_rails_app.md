@@ -113,9 +113,6 @@ end
 ## Logout Link
 ```
 <% if current_user %>
-  <li><%= link_to "Add a flower", new_photo_path %></li>
-  <li><%= link_to "My profile", user_path(current_user()) %></li>
-  <li><%= link_to "My flowers", my_photos_path %></li>
   <li><%= link_to "Logout", logout_path, method: :delete, data: {confirm: "Are you sure?"} %></li>
 <% end %>
 ```

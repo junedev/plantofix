@@ -4,7 +4,7 @@ class BoardsController < ApplicationController
   # GET /boards/1
   def show
     @board = Board.find(params[:id])
-    redirect_to root_path unless authenticate_user(@user)
+    redirect_to root_path unless logged_in?
   end
 
   #GET /boards/new
