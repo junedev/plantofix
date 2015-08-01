@@ -7,7 +7,9 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
+<% if current_user %>
+<%= link_to "Logout", sessions_path, method: :delete, data: {confirm: "Are you sure?"} %>
+<% end %>
 <%= yield %>
 
 </body>
