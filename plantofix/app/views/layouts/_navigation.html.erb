@@ -1,4 +1,4 @@
 Navigation
 <% if current_user %>
-<%= link_to "Logout", sessions_path, method: :delete, data: {confirm: "Are you sure?"} %>
+<%= link_to "Logout", "/logout", method: :delete, data: {confirm: "Are you sure?"} %>
 <% end %>

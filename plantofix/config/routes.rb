@@ -1,9 +1,10 @@
 Rails.application.routes.draw do
-  resources :tasks
-  resources :lists
   root "static#home"
-  resources :boards
-  resources :teams
   resources :users
+  resources :teams
+  resources :boards
+  resources :lists
+  resources :tasks
   resources :sessions, only: [:new, :destroy, :create]
+  delete "/logout", to: "sessions#destroy"
 end
