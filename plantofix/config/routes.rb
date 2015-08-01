@@ -3,5 +3,5 @@ Rails.application.routes.draw do
   resources :boards
   resources :teams
   resources :users
-  resources :session, only: [:new, :destroy, :create]
+  resources :sessions, only: [:new, :destroy, :create]
 end
