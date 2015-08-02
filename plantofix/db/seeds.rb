@@ -1,8 +1,8 @@
-User.destroy_all
-Board.destroy_all
-Team.destroy_all
-List.destroy_all
 Task.destroy_all
+List.destroy_all
+Board.destroy_all
+User.destroy_all
+Team.destroy_all
 
 u1 = User.create!(username: "User1", email: "user1@gmail.com", password: "user1", password_confirmation: "user1")
 u2 = User.create!(username: "User2", email: "user2@gmail.com", password: "user2", password_confirmation: "user2")

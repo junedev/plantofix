@@ -7,7 +7,8 @@
     <input type="hidden" name="list[board_id]" value="<%= get_current_board["id"] %>">
     <input type="submit" value="Add list">
 </form>
-
+<br>
+<br>
 <ul class="list_<%= list.id %>">
 <%= render partial: "boards/task", collection: list.tasks %>
 
