@@ -1,5 +1,8 @@
+<div class="col-lg-2 col-md-4 col-sm-12">
 <h3><%= list.name %></h3>
-
+<div id="list<%= list.id %>" class="dragtarget" ondrop="drop(event)" ondragover="allowDrop(event)">
+  
+</div>
 <%= button_to 'Delete', list, method: :delete, data: { confirm: 'Are you sure?' } %>
 <form action="/lists" method="POST">
     <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
@@ -20,3 +23,4 @@
     <input type="submit" value="Add task">
 </form>
 </ul>
+</div>

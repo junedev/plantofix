@@ -1,4 +1,7 @@
 <% set_current_board(@board) %>
 <h2>This is board <%= @board.name %></h2>
-
+<div class="container-fluid">
+<div class="row">
 <%= render partial: "boards/list", collection: @board.lists %>
+</div>
+</div>

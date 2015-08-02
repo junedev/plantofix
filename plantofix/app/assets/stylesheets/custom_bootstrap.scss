@@ -1,0 +1,15 @@
+
+// Not bootstrap
+.task_item {
+  width: 100%;
+  min-height: 60px;
+  text-align: left;
+  vertical-align: top;
+  display: inline-block;
+}
+
+.dragtarget {
+  height: 200px;
+  width: 200px;
+  border: 1px solid black;
+}

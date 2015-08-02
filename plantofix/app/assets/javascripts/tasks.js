@@ -1,9 +1,22 @@
 $( function(){
   $(".task_edit").on("click", function(){
-    $(this).hide()
-    $(this).siblings(".task_item").hide()
-    $(this).siblings("form").css("display","")
+    event.stopPropagation();
+    $(this).closest('.task_item_box').siblings('.task_edit_box').show();
+    $(this).closest('.task_item_box').hide();
   });
 
-
 });
+
+function allowDrop(ev) {
+  ev.preventDefault();
+}
+
+function drag(ev) {
+  ev.dataTransfer.setData("text", ev.target.id);
+}
+
+function drop(ev) {
+  ev.preventDefault();
+  var data = ev.dataTransfer.getData("text");
+  ev.target.appendChild(document.getElementById(data));
+}

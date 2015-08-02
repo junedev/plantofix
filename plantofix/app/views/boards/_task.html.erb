@@ -1,14 +1,36 @@
-<li> <div class="task_item">
-<%= task.name %>
-<%= link_to 'Delete', task, method: :delete, data: { confirm: 'Are you sure?' } %>
-</div>
-<button class="task_edit">Edit</button>
-<form action="/tasks/<%= task.id %>" method="post" class="edit_form" style="display:none">
-    <input type="hidden" name="_method" value="patch" />
-    <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
-    <input type="text" name="task[name]" value="<%= task.name %>">
-    <input type="hidden" name="task[assignee_id]" value="<%= task.assignee_id %>">
-    <input type="hidden" name="task[list_id]" value="<%= task.list_id %>">
-    <input type="submit" name="commit" value="Edit task">
-</form>
+<li> 
+  <div class="task_item_box">
+    <div id="task<%= task.id %>" class="well task_item" draggable="true" ondragstart="drag(event)">
+      <%= task.name %>
+    </div>
+    <div class="btn-group pull-right">
+      <button class="task_edit btn btn-success"><span class="glyphicon glyphicon-edit"></span></button>
+    </div>
+    <div class="btn-group">
+      <form method="post" action="/tasks/<%= task.id %>">
+        <input type="hidden" name="_method" value="delete" />
+        <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+        <button type="submit" data-confirm="Are you sure?" class="taks_delete btn btn-danger">
+          <span class="glyphicon glyphicon-remove"></span>
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <div class="task_edit_box" style="display:none">
+    <form action="/tasks/<%= task.id %>" method="post">
+      <input type="hidden" name="_method" value="patch" />
+      <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+      <input type="hidden" name="task[assignee_id]" value="<%= task.assignee_id %>">
+      <input type="hidden" name="task[list_id]" value="<%= task.list_id %>">
+      <textarea name="task[name]" class="well task_item form-control"><%= task.name %></textarea>
+      <div class="btn-group">
+        <button type="submit" name="commit" class="btn btn-success">
+          <span class="glyphicon glyphicon-ok"></span>
+        </button>
+      </div>
+    </div>
+  </form>
+  <br>
+  <br>
 </li>
