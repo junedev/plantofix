@@ -31,11 +31,11 @@ ActiveRecord::Schema.define(version: 20150801172428) do
   end
 
   create_table "tasks", force: :cascade do |t|
-    t.text     "name"
+    t.string   "name",        limit: 1000
     t.integer  "list_id"
     t.integer  "assignee_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
   end
 
   create_table "teams", force: :cascade do |t|

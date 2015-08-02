@@ -1,4 +1,10 @@
-Navigation<br>
+Navigation
 <% if current_user %>
 <%= link_to "Logout", "/logout", method: :delete, data: {confirm: "Are you sure?"} %>
 <% end %>
+<% flash.each do |name, message| %>
+<div class="flash-message">
+  <%= message %>
+</div>
+<% end %>
+

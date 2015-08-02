@@ -12,14 +12,14 @@ class TasksController < ApplicationController
   end
 
   # PATCH/PUT /tasks/1
-  # def update
-  #   @task = Task.find(params[:id])
-  #   if @task.update(task_params)
-  #     redirect_to task_path, notice: 'Task was successfully updated.'
-  #   else
-  #     redirect_to task_path, alert: 'Task could not be updated.'
-  #   end
-  # end
+  def update
+    @task = Task.find(params[:id])
+    if @task.update(task_params)
+      redirect_to "/boards/#{get_current_board["id"]}", notice: 'Task was successfully updated.'
+    else
+      redirect_to "/boards/#{get_current_board["id"]}", alert: 'Task could not be updated.'
+    end
+  end
 
   # DELETE /tasks/1
   def destroy
