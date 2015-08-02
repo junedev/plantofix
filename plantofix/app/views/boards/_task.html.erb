@@ -1,7 +1,9 @@
-<li> <%= task.name %> 
+<li> <div class="task_item">
+<%= task.name %>
 <%= link_to 'Delete', task, method: :delete, data: { confirm: 'Are you sure?' } %>
+</div>
 <button class="task_edit">Edit</button>
-<form action="/tasks/<%= task.id %>" method="post" class="edit_form">
+<form action="/tasks/<%= task.id %>" method="post" class="edit_form" style="display:none">
     <input type="hidden" name="_method" value="patch" />
     <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
     <input type="text" name="task[name]" value="<%= task.name %>">
