@@ -23,6 +23,7 @@ class BoardsController < ApplicationController
   def create
     @board = Board.new(board_params)
     if @board.save
+      @board.lists.create!(name:"New list")
       redirect_to boards_path, notice: 'Board was successfully created.'
     else
       render :new

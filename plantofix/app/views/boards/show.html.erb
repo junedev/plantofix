@@ -1,3 +1,4 @@
 <% set_current_board(@board) %>
 <h2>This is board <%= @board.name %></h2>
+
 <%= render partial: "boards/list", collection: @board.lists %>

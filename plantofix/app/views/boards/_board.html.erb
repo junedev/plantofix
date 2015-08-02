@@ -1,16 +1,2 @@
 <h2><%= link_to board.name, board_path(board) %></h2>
 <%= button_to 'Delete', board, method: :delete, data: { confirm: 'Are you sure?' } %>
-<form action="/boards" method="POST">
-  <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
-  <input type="text" name="board[name]">
-
-  <select name="board[team_id]">
-    <option value="single_person">Private board</option>
-    <% current_user.teams.each do |team| %>
-      <% if team.users.count > 1 %>
-      <option value="<%= team.id %>"><%= team.name %></option>
-      <% end %>
-    <% end %>
-  </select>
-  <input type="submit" value="Add board">
-</form>
