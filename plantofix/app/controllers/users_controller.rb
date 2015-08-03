@@ -27,6 +27,8 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       session[:user_id] = @user.id
+      team = @user.teams.create!(name: "Private board")
+      team.lists.create!(name:"New list")
       redirect_to @user, notice: 'User was successfully created.'
     else
       render :new

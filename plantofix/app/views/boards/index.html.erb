@@ -4,7 +4,8 @@
   <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
   <input type="text" name="board[name]">
   <select name="board[team_id]">
-    <option value="single_person">Private board</option>
+  <% private_team = Team.find_private_team(current_user) %>
+    <option value="<%= private_team.id %>"><%= private_team.name %></option>
     <% current_user.teams.each do |team| %>
       <% if team.users.count > 1 %>
       <option value="<%= team.id %>"><%= team.name %></option>

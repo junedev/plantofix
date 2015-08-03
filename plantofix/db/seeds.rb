@@ -10,12 +10,12 @@ u2 = User.create!(username: "User2", email: "user2@gmail.com", password: "user2"
 t1 = u1.teams.create!(name:"Team1 with 2 users")
 t1.users << u2
 
-t2 = u1.teams.create!(name:"single_person1")
-t3 = u2.teams.create!(name:"single_person2")
+t2 = u1.teams.create!(name:"Private board")
+t3 = u2.teams.create!(name:"Private board")
 
 b1 = t2.boards.create!(name: "Team board")
-b2 = t2.boards.create(name: "Private board for user1")
-b3 = t3.boards.create(name: "Private board for user2")
+b2 = t2.boards.create!(name: "Private board for user1")
+b3 = t3.boards.create!(name: "Private board for user2")
 
 l1 = b1.lists.create!(name:"First list on teamboard")
 l2 = b1.lists.create!(name:"Second list on teamboard")

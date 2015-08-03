@@ -26,7 +26,7 @@ class BoardsController < ApplicationController
       @board.lists.create!(name:"New list")
       redirect_to boards_path, notice: 'Board was successfully created.'
     else
-      render :new
+      render redirect_to boards_path, alert: 'Board could not be created.'
     end
   end
 
