@@ -4,6 +4,7 @@ class TeamsController < ApplicationController
   # POST /teams
   def create
     @team = Team.new(team_params)
+    # FIXME make controller diet!
     team_member = User.find_by_username(params["team"]["username"])
     if team_member && (team_member != current_user)
       if @team.save
@@ -32,6 +33,13 @@ class TeamsController < ApplicationController
     @team = Team.find(params[:id])
     @team.destroy
     redirect_to user_path(current_user), notice: 'Team was successfully deleted.'
+  end
+
+  def team_member_destroy
+    user = User.find(params["user_id"])
+    team = Team.find(params["team_id"])
+    team.users.delete(user)
+    redirect_to user_path(current_user)
   end
 
   private

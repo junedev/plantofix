@@ -7,10 +7,15 @@
     <div class="input-group list-item">
     <input type="text" class="form-control" value="<%= user.username %>" disabled>
       <span class="input-group-btn">
-        <button class="btn btn-danger" type="button">
-          <span class="glyphicon glyphicon-remove"></span>
-        </button>
-      </span>
+    <form method="post" action="/team_member?user_id=<%= user.id %>&team_id=<%= team.id %>">
+      <input type="hidden" name="_method" value="delete" />
+      <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+      <button type="submit" data-confirm="Are you sure?" class="btn btn-danger">
+        <span class="glyphicon glyphicon-remove"></span>
+      </button>
+    </form>
+
+     </span>
     </div>
   <% end %>
 

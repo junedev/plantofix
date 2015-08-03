@@ -7,4 +7,5 @@ Rails.application.routes.draw do
   resources :tasks
   resources :sessions, only: [:new, :destroy, :create]
   delete "/logout", to: "sessions#destroy"
+  delete "/team_member", to: "teams#team_member_destroy"
 end
