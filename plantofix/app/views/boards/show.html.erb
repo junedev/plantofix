@@ -1,7 +1,12 @@
 <% set_current_board(@board) %>
 <h2>This is board <%= @board.name %></h2>
-<div class="container-fluid">
+<form action="/lists" method="POST" >
+    <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+    <input type="text" name="list[name]">
+    <input type="hidden" name="list[board_id]" value="<%= get_current_board["id"] %>">
+    <input type="submit" value="Add list">
+</form>
+
 <div class="row">
 <%= render partial: "boards/list", collection: @board.lists %>
-</div>
 </div>

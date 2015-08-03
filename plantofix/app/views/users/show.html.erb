@@ -1,0 +1,9 @@
+<div class="col-md-5 col-sx-10 padding-increase">
+  <h1>Account details</h1>
+  <%= render 'form' %>
+</div>
+
+<div class="col-md-5 col-sx-10 padding-increase">
+  <h1>Teams</h1>
+  <%= render partial: "users/team", collection: current_user.teams %>
+</div>

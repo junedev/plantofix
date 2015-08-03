@@ -1,5 +1,15 @@
+html, body {
+  height: 100%;
+}
 
-// Not bootstrap
+.list-item {
+  padding: 10px 0;
+}
+
+.padding-increase {
+  padding: 0 100px;
+}
+
 .task_item {
   width: 100%;
   min-height: 60px;

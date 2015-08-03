@@ -17,7 +17,7 @@ class UsersController < ApplicationController
   # GET /users/1/edit
   def edit
     @user = User.find(params[:id])
-    redirect_to root_path unless authenticate_user(@user)
+    redirect_to boards_path unless authenticate_user(@user)
   end
 
   # Save new user from to database
@@ -36,10 +36,10 @@ class UsersController < ApplicationController
   # PATCH/PUT /users/1
   def update
     @user = User.find(params[:id])
-    if @user.update(user_params)
-      redirect_to @user, notice: 'User was successfully updated.'
+    if (@user && @user.authenticate(params[:user][:password])) && @user.update(user_params) 
+      redirect_to @user, notice: 'Account details were successfully updated.'
     else
-      render :edit
+      redirect_to @user, alert: 'Account details could not be changed.'
     end
   end
 
@@ -55,4 +55,4 @@ class UsersController < ApplicationController
     def user_params
       params.require(:user).permit(:username, :avatar_url, :email, :password, :password_confirmation)
     end
-end
+  end

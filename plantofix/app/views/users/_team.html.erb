@@ -1,0 +1,14 @@
+<h2><%= team.name %></h2>
+
+<% if team.users.count > 1 %>
+  <% team.users.each do |user| %>
+    <div class="input-group list-item">
+    <input type="text" class="form-control" value="<%= user.username %>" disabled>
+      <span class="input-group-btn">
+        <button class="btn btn-danger" type="button">
+          <span class="glyphicon glyphicon-remove"></span>
+        </button>
+      </span>
+    </div>
+  <% end %>
+<% end %>

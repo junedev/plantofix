@@ -8,14 +8,14 @@
 </head>
 <body>
 
-<% if current_user %>
-<aside>
-<%= render "layouts/navigation" unless params[:action] == "home" %>
-</aside>
-<%end %>
-<main>
-<%= yield %>
-</main>
+  <div class="container-fluid">
+    <div class="row">
+      <% if current_user %>
+        <%= render "layouts/navigation" unless params[:action] == "home" %>
+      <% end %>
+      <%= yield %>
+    </div>
+  </div>
 
 </body>
 </html>

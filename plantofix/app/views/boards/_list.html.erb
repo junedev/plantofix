@@ -1,23 +1,16 @@
 <div class="col-lg-2 col-md-4 col-sm-12" >
-<h3><%= list.name %></h3>
+  <h3><%= list.name %></h3>
 
-<%= button_to 'Delete', list, method: :delete, data: { confirm: 'Are you sure?' } %>
-<form action="/lists" method="POST">
-    <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
-    <input type="text" name="list[name]">
-    <input type="hidden" name="list[board_id]" value="<%= get_current_board["id"] %>">
-    <input type="submit" value="Add list">
-</form>
-<br>
-<br>
-<ul class="sortable">
-<%= render partial: "boards/task", collection: list.tasks %>
-</ul>
-<form action="/tasks" method="POST">
+  <%= button_to 'Delete', list, method: :delete, data: { confirm: 'Are you sure?' } %>
+
+  <ul class="sortable _list<%= list.id %> list-unstyled">
+    <%= render partial: "boards/task", collection: list.tasks %>
+  </ul>
+  <form action="/tasks" method="POST">
     <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
     <input type="text" name="task[name]">
     <input type="hidden" name="task[assignee_id]" value="<%= current_user.id %>">
     <input type="hidden" name="task[list_id]" value="<%= list.id %>">
     <input type="submit" value="Add task">
-</form>
+  </form>
 </div>

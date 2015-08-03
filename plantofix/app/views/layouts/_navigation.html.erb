@@ -1,10 +1,21 @@
-Navigation
-<% if current_user %>
-<%= link_to "Logout", "/logout", method: :delete, data: {confirm: "Are you sure?"} %>
-<% end %>
-<% flash.each do |name, message| %>
-<div class="flash-message">
-  <%= message %>
-</div>
-<% end %>
+<aside class="col-lg-2 col-md-2 sidebar ">
+  <ul class="nav nav-sidebar">
+    <li><a href="/users/<%= current_user.id %>">Manage account & teams</a></li>
+    <li><a href="/boards">My boards</a></li>
+    <% current_user.boards.each do |board| %>
+    <li><a href="/boards/<%= board.id %>"><%= board.name %></a></li>
+    <% end %>
+
+      <% flash.each do |name, message| %>
+      <li>
+      <div class="flash-message flash-message-<%= name %>">
+        <%= message %>
+      </div>
+    </li>
+      <% end %>
+    <li>
+      <%= link_to "Logout", "/logout", method: :delete, data: {confirm: "Are you sure?"} %>
+    </li>
+  </ul>
+</aside>
 
