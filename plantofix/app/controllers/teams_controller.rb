@@ -46,10 +46,23 @@ class TeamsController < ApplicationController
     redirect_to user_path(current_user)
   end
 
+  def team_member_add
+    team = Team.find(params["team_id"])
+    user = User.find_by_username(user_params["username"])
+    if user && !team.users.include?(user)
+    team.users << user
+  end
+  redirect_to user_path(current_user)
+  end
+
   private
     # Never trust parameters from the scary internet, only allow the white list through.
     def team_params
       params.require(:team).permit(:name, :board_id)
+    end
+
+    def user_params
+      params.require(:user).permit(:username)
     end
 
     def delete_team_member(team_id,user_id)

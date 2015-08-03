@@ -14,9 +14,14 @@
         <span class="glyphicon glyphicon-remove"></span>
       </button>
     </form>
-
      </span>
     </div>
   <% end %>
+
+  <form action="/team_member?team_id=<%= team.id %>" method="POST">
+    <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+    <input type="text" name="user[username]">
+    <input type="submit" value="Add team member">
+  </form>
 
 <% end %>
