@@ -14,13 +14,6 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
-  # Edit profile
-  # GET /users/1/edit
-  def edit
-    @user = User.find(params[:id])
-    redirect_to root_path unless authenticate_user(@user)
-  end
-
   # Save new user from to database
   # POST /users
   def create
@@ -28,7 +21,6 @@ class UsersController < ApplicationController
     if @user.save
       session[:user_id] = @user.id
       team = @user.teams.create!(name: "Private board")
-      team.lists.create!(name:"New list")
       redirect_to @user, notice: 'User was successfully created.'
     else
       render :new

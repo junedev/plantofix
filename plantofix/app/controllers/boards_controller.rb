@@ -1,22 +1,16 @@
 class BoardsController < ApplicationController
 
+  # Board overview page
+  # GET /boards
+  def index
+  end
+
   # Board show page
   # GET /boards/1
   def show
     @board = Board.find(params[:id])
     redirect_to root_path unless logged_in?
   end
-
-  #GET /boards/new
-  # def new
-  #   @board = Board.new
-  # end
-
-  # GET /boards/1/edit
-  # def edit
-  #   @board = Board.find(params[:id])
-  #   redirect_to root_path unless authenticate_user(@user)
-  # end
 
   # Save new board to database
   # POST /boards

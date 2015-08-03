@@ -1,5 +1,5 @@
-<% if team.users.count > 0 %>
-<%# FIXME shouldn't show single_person team %>
+<% if team.users.count > 1 %>
+<%# FIXME set to > 0 for debugging to see all boards %>
 
   <h2><%= team.name %></h2>
 <%= button_to 'Delete', team, method: :delete, data: { confirm: 'Are you sure? All team boards will become your private boards.' } %>
