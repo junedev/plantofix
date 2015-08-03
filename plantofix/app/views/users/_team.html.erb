@@ -2,7 +2,7 @@
 <%# FIXME shouldn't show single_person team %>
 
   <h2><%= team.name %></h2>
-
+<%= button_to 'Delete', team, method: :delete, data: { confirm: 'Are you sure? All team boards will become your private boards.' } %>
   <% team.users.each do |user| %>
     <div class="input-group list-item">
     <input type="text" class="form-control" value="<%= user.username %>" disabled>
