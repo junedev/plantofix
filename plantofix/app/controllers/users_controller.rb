@@ -4,6 +4,7 @@ class UsersController < ApplicationController
   # GET /users/1
   def show
     @user = User.find(params[:id])
+    @team = Team.new
     redirect_to root_path unless authenticate_user(@user)
   end
 
@@ -17,7 +18,7 @@ class UsersController < ApplicationController
   # GET /users/1/edit
   def edit
     @user = User.find(params[:id])
-    redirect_to boards_path unless authenticate_user(@user)
+    redirect_to root_path unless authenticate_user(@user)
   end
 
   # Save new user from to database

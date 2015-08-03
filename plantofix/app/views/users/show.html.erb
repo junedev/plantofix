@@ -1,9 +1,23 @@
 <div class="col-md-5 col-sx-10 padding-increase">
-  <h1>Account details</h1>
-  <%= render 'form' %>
+  <h1>Teams</h1>
+  <%= render partial: "users/team", collection: current_user.teams %>
+
+  <form action="/teams" method="POST">
+    <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+    <div class="form-group">
+      <label for="team_name">Team name</label>
+      <input type="text" name="team[name]" id="team-name" class="form-control"> 
+    </div>
+    <div class="form-group">
+    <label for="team_username">Username of one other team member</label>
+      <input type="text" name="team[usename]" class="form-control" id="team_username">
+    </div>
+    <input type="submit" value="Add team" class="btn btn-primary">
+  </form>
+
 </div>
 
 <div class="col-md-5 col-sx-10 padding-increase">
-  <h1>Teams</h1>
-  <%= render partial: "users/team", collection: current_user.teams %>
+  <h1>Account details</h1>
+  <%= render 'form' %>
 </div>

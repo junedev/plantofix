@@ -1,6 +1,7 @@
-<h2><%= team.name %></h2>
+<% if team.users.count > 0 %>
 
-<% if team.users.count > 1 %>
+  <h2><%= team.name %></h2>
+
   <% team.users.each do |user| %>
     <div class="input-group list-item">
     <input type="text" class="form-control" value="<%= user.username %>" disabled>
@@ -11,4 +12,5 @@
       </span>
     </div>
   <% end %>
+
 <% end %>
