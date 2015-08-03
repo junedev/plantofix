@@ -4,13 +4,16 @@ class TeamsController < ApplicationController
   # POST /teams
   def create
     @team = Team.new(team_params)
-    if @team.save
-      @team.users << current_user
-      @team.users << User.find_by_username(params["team"]["username"])
-      @team.save
-      redirect_to user_path(current_user), notice: 'Team was successfully created.'
-    else
-      redirect_to user_path(current_user)
+    team_member = User.find_by_username(params["team"]["username"])
+    if team_member && (team_member != current_user)
+      if @team.save
+        @team.users << current_user
+        @team.users << team_member
+        @team.save
+        redirect_to user_path(current_user), notice: 'Team was successfully created.'
+      else
+        redirect_to user_path(current_user), alert: 'Team could not be created.'
+      end
     end
   end
 
@@ -36,4 +39,4 @@ class TeamsController < ApplicationController
     def team_params
       params.require(:team).permit(:name, :board_id)
     end
-end
+  end
