@@ -20,4 +20,5 @@
 <div class="col-md-5 col-sx-10 padding-increase">
   <h1>Account details</h1>
   <%= render 'form' %>
+  <%= button_to 'Delete account', current_user, method: :delete, data: { confirm: 'Are you sure? All your private boards will be lost.' }, class:"btn btn-danger" %>
 </div>

@@ -41,8 +41,12 @@ class UsersController < ApplicationController
   # DELETE /users/1
   def destroy
     @user = User.find(params[:id])
-    @user.destroy
-    redirect_to users_url, notice: 'User was successfully destroyed.'
+    private_team = Team.find_private_team(@user)
+    private_team.boards.destroy_all
+    private_team.destroy
+    session[:user_id] = nil
+    @user.delete
+    redirect_to root_path
   end
 
   private
