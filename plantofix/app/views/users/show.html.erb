@@ -1,8 +1,8 @@
 <div class="col-md-5 col-sx-10 padding-increase">
   <h1>Teams</h1>
   <%= render partial: "users/team", collection: current_user.teams %>
-
-  <form action="/teams" method="POST">
+<input type="button" value="Add team" class="btn btn-primary add_team_button">
+  <form action="/teams" method="POST" class="add_team_form" style="display: none">
     <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
     <div class="form-group">
       <label for="team_name">Team name</label>
