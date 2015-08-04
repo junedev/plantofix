@@ -4,7 +4,12 @@
           border-radius: 0 !important;
 }
 
+.btn:active:focus, .btn:focus {
+  outline: none !important;
+}
+
 .cover {
+  background-color: rgba(255,255,255,0.4);
   position: absolute;
   top: 50%;
   left: 50%;
@@ -12,10 +17,36 @@
   transform: translate(-50%, -50%);
   text-align: center;
   width: 100%;
+  padding: 50px;
+  input {
+    text-align: left;
+    outline: none;
+    border: 0;
+  }
+}
+
+.lead {
+  font-size: $font-size-base*2;
+  &#or {
+    margin-top: 20px;
+  }
+}
+
+.home_head {
+  margin-top: -20px;
+  margin-bottom: 20px;
+  font-family: 'Alegreya SC', serif;
+  font-weight: 600;
+  font-size: $font-size-base*10;
 }
 
 .cover-button {
-
+  background-color: rgba(255,255,255,0.7);
+  width: 200px;
+  font-size: $font-size-base*1.5;
+  &:hover {
+    background-color: rgba(0,0,0,0.15);
+  }
 }
 
 .list-item {

@@ -1,6 +1,12 @@
-  <div class="cover">
-    <p class="lead"><i>All code is never finished, so ...</i></p>
-    <h1>Plan-to-Fix</h1>
-    <p> <%= button_to "Login", new_session_path, method: :get, class:"btn btn-default btn-lg cover-button" %></p>
-    <p><%= button_to "Sign-up", new_user_path, method: :get, class:"btn btn-default btn-lg cover-button" %></p>
-  </div>
+<div class="cover">
+  <p class="lead"><i>All code is never finished, so ...</i></p>
+  <h1 class="home_head">Plan-to-Fix</h1>
+  <a class="btn btn-default btn-lg cover-button" href="/sessions/new">
+    Login
+  </a>
+  <p class="lead" id="or"><i>or</i></p>
+    <a class="btn btn-default btn-lg cover-button" href="/users/new">
+    Sign-up
+  </a>
+</div>
+
