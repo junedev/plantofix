@@ -1,3 +1,6 @@
-<h1> This will become the homepage </h1>
-<%= button_to "Login", new_session_path, method: :get %>
-<%= button_to "Sign-up", new_user_path, method: :get %>
+  <div class="cover">
+    <p class="lead"><i>All code is never finished, so ...</i></p>
+    <h1>Plan-to-Fix</h1>
+    <p> <%= button_to "Login", new_session_path, method: :get, class:"btn btn-default btn-lg cover-button" %></p>
+    <p><%= button_to "Sign-up", new_user_path, method: :get, class:"btn btn-default btn-lg cover-button" %></p>
+  </div>
