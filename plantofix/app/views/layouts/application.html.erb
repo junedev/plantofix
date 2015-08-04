@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <% if !current_user %>
-<html class="full-container background_overlay">
+<html class="full-container blur">
 <% else %>
 <html>
 <% end %>
@@ -9,7 +9,7 @@
   <%= stylesheet_link_tag    'application', media: 'all'%>
   <%= javascript_include_tag 'application'%>
   <%= csrf_meta_tags %>
-  <link href='http://fonts.googleapis.com/css?family=Alegreya+SC:400,700italic,700,900' rel='stylesheet' type='text/css'>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <% if !current_user %>
   <body class="full">

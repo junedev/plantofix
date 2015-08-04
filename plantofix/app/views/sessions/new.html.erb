@@ -1,14 +1,19 @@
-<h2> You can login here:</h2>
-<%= form_tag sessions_path do %>
-<div class="field">
-  <%= label_tag :email %>
-  <%= text_field_tag :email %>
+<%= render "layouts/logo" %>
+<div class="cover sign-up">
+  <h1> Login to Plan-to-fix</h1>
+  <form action="/sessions" accept-charset="UTF-8" method="post">
+    <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+    <div class="field form-group">
+      <label for="email">Email</label>
+      <input type="text" name="email" id="email" class="form-control"/>
+    </div>
+    <div class="field form-group">
+      <label for="password">Password</label>
+      <input type="password" name="password" id="password" class="form-control" />
+    </div>
+    <div class="actions">
+      <input type="submit" name="commit" value="Login" class="btn btn-default btn-lg cover-button" />
+    </div>
+  </form>
+
 </div>
-<div class="field">
-  <%= label_tag :password %>
-  <%= password_field_tag :password %>
-</div>
-<div class="actions">
-<%= submit_tag "Log me in" %>
-</div>
-<% end %>

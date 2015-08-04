@@ -1,5 +1,21 @@
+@import url(http://fonts.googleapis.com/css?family=Inconsolata:400,700);
+// @import url(http://fonts.googleapis.com/css?family=Roboto:400,500,400italic,500italic,700,900,700italic);
+@font-face {
+  font-family:'Roboto';
+  src:font-url('Roboto-Medium.ttf');
+  font-weight: bold;
+} 
+@font-face {
+  font-family:'Roboto';
+  src:font-url('Roboto-Regular.ttf');
+  font-weight: normal;
+} 
 $input-border-focus: #767171;
+$cover-font-color: #F5F6EF;
+$font-family-base: 'Roboto', sans-serif;
+$font-size-base: 16px;
+$color-red: #AF2424;
+$color-green: #0F8033;
 @import "bootstrap-sprockets";
 @import "bootstrap";
 @import "custom_bootstrap";
-@import "full";

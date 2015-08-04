@@ -1,15 +1,63 @@
 * {
   -webkit-border-radius: 0 !important;
-     -moz-border-radius: 0 !important;
-          border-radius: 0 !important;
+  -moz-border-radius: 0 !important;
+  -ms-border-radius: 0 !important;
+  -o-border-radius: 0 !important;
+  border-radius: 0 !important;
 }
 
 .btn:active:focus, .btn:focus {
   outline: none !important;
 }
 
+.btn-danger {
+  background-color: $color-red;
+    &:hover {
+  background-color: darken( $color-red, 10% );
+  }
+}
+
+.btn-primary {
+  background-color: $color-green;
+  &:hover {
+  background-color: darken( $color-green, 10% );
+  }
+}
+
+
+
+.full-container{
+  position: relative;
+  height: 100%;
+}
+
+.full::before {
+  content: "";
+  z-index: -1;
+  -webkit-filter: blur(5px);
+  -moz-filter: blur(5px);
+  -o-filter: blur(5px);
+  -ms-filter: blur(5px);
+  filter: blur(5px);
+  position:absolute;
+  width:100%;
+  height:100%;
+  background-image: url(code.png);
+  background-position:center;
+  background-attachment:fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+  -o-background-size: cover;
+  -webkit-transform: scale(1.03);
+  -moz-transform: scale(1.03);
+  -ms-transform: scale(1.03);
+  -o-transform: scale(1.03);
+  transform: scale(1.03);
+}
+
 .cover {
-  background-color: rgba(255,255,255,0.4);
+  color: $cover-font-color;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -17,44 +65,101 @@
   transform: translate(-50%, -50%);
   text-align: center;
   width: 100%;
-  padding: 50px;
+  padding: 10px;
+}
+
+@media (min-width: $screen-sm-min) {
+  .cover.sign-up {
+   width: 50%;
+   font-size: $font-size-base*1.5;
+ }
+ .sign-up .form-group {
   input {
-    text-align: left;
-    outline: none;
-    border: 0;
+    font-size: $font-size-base*1.5;
+  }
+  label {
+    font-weight: normal;
+  }
+}
+}
+
+@media (min-width: $screen-lg-min) {
+  .cover.sign-up {
+   width: 30%;
+ }
+}
+
+
+.sign-up .form-group {
+  text-align: left;
+  outline: none;
+  border: 0;
+  padding: 5px;
+  label {
+    padding-bottom: 5px;
   }
 }
 
 .lead {
   font-size: $font-size-base*2;
+  letter-spacing: 1px;
   &#or {
     margin-top: 20px;
   }
 }
 
 .home_head {
-  margin-top: -20px;
-  margin-bottom: 20px;
-  font-family: 'Alegreya SC', serif;
+  margin-bottom: 40px;
+  font-family: 'Inconsolata', ;
+  // font-family: 'Alegreya SC', serif;
   font-weight: 600;
   font-size: $font-size-base*10;
 }
 
 .cover-button {
-  background-color: rgba(255,255,255,0.7);
+  background-color: rgba(255,255,255,0.1);
+  color: $cover-font-color;
+  border: 1px solid $cover-font-color;
   width: 200px;
   font-size: $font-size-base*1.5;
   &:hover {
-    background-color: rgba(0,0,0,0.15);
+    background-color: rgba(255,255,255,0.3);
+    color: $cover-font-color;
   }
 }
 
-.list-item {
-  padding: 10px 0;
+.sign-up .cover-button {
+  margin: 20px;
+  height: 50px;
 }
 
-.padding-increase {
-  padding: 0 100px;
+
+
+
+.logo {
+  height: 80px;
+  padding: 0 15px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  font-size: 48px;
+  margin: 20px;
+  // border: 1px solid $cover-font-color;
+  background-color: rgba(255,255,255,0.5);
+  ul {
+    padding: 0;
+    margin-top: -5px;
+  }
+  li {
+    vertical-align: top;
+    display: inline-block;
+    height: 80px;
+    line-height: 80px;
+    &.enlarge {
+      margin-top: -6px;
+      font-size: 80px;
+    }
+  }
 }
 
 .task_item {
@@ -63,4 +168,26 @@
   text-align: left;
   vertical-align: top;
   display: inline-block;
+}
+
+.page-container {
+  padding: 25px;
+  height: 100vh;
+  margin-left: 310px;
+}
+
+.sidebar {
+border: 1px solid black;
+height: 100vh;
+}
+
+@media (min-width: $screen-md-min) {
+  .well {
+    height: 100%;
+    padding: 20px 25px;
+    margin: 25px;
+    h1 {
+      margin-top: 0;
+    }
+  }
 }
