@@ -1,21 +1,29 @@
 <!DOCTYPE html>
+<% if params[:action] == "home" %>
+<html class="full-container">
+<% else %>
 <html>
+<% end %>
 <head>
   <title>Plantofix</title>
   <%= stylesheet_link_tag    'application', media: 'all'%>
   <%= javascript_include_tag 'application'%>
   <%= csrf_meta_tags %>
 </head>
-<body>
+<% if params[:action] == "home" %>
+  <body class="full">
+<% else %>
+  <body>
+<% end %>
 
-  <div class="container-fluid">
-    <div class="row">
-      <% if current_user %>
+    <main class="container-fluid">
+      <div class="row">
+        <% if current_user %>
         <%= render "layouts/navigation" unless params[:action] == "home" %>
-      <% end %>
-      <%= yield %>
-    </div>
-  </div>
+        <% end %>
+        <%= yield %>
+      </div>
+    </main>
 
-</body>
-</html>
+  </body>
+  </html>
