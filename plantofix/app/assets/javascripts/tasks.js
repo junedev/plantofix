@@ -1,9 +1,8 @@
 $( function(){
 
   $(".task_edit").on("click", function(){
-    event.stopPropagation();
-    $(this).closest('.task_item_box').siblings('.task_edit_box').show();
-    $(this).closest('.task_item_box').hide();
+    $(this).parent().siblings(".task_edit_box").show();
+    $(this).closest('.task_item').hide();
   });
 
   $(".sortable").sortable({

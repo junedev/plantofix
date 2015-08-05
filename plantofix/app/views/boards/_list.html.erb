@@ -5,20 +5,24 @@
       <%= render partial: "boards/task", collection: list.tasks %>
     </ul>
 
-
-    <form action="/tasks" method="POST" class="form-inline">
+    <form action="/tasks" method="POST">
       <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
       <input type="hidden" name="task[assignee_id]" value="<%= current_user.id %>">
       <input type="hidden" name="task[list_id]" value="<%= list.id %>">
       <div class="form-group">
         <div class="input-group">
           <input type="text" name="task[name]" class="form-control">
-          <div class="input-group-addon padding-off"><button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span></button></div>
+          <div class="input-group-addon padding-off">
+            <button type="submit" class="btn btn-primary">
+              <span class="glyphicon glyphicon-plus"></span>
+            </button>
+          </div>
         </div>
       </div>
     </form>
-<div class="clearfix margin-fix">
-    <%= button_to 'Delete list', list, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-danger pull-right" %>
+    
+    <div class="clearfix margin-fix">
+      <%= button_to 'Delete list', list, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-danger pull-right" %>
     </div>
   </div>
 </div>
