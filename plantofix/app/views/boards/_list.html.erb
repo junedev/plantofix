@@ -1,4 +1,4 @@
-<div class="col-md-5 col-sx-12 col-md-offset-2 content first">
+<div class="col-md-3 col-sm-6 col-sx-12 content">
   <h3><%= list.name %></h3>
 
   <%= button_to 'Delete', list, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-danger" %>
@@ -8,7 +8,9 @@
   </ul>
   <form action="/tasks" method="POST">
     <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
-    <input type="text" name="task[name]">
+    <div class="form-group">
+      <input type="text" name="task[name]" >
+    </div>
     <input type="hidden" name="task[assignee_id]" value="<%= current_user.id %>">
     <input type="hidden" name="task[list_id]" value="<%= list.id %>">
     <input type="submit" value="Add task">

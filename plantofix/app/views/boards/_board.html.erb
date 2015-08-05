@@ -1,13 +1,13 @@
 <a href="/boards/<%= board.id %>" >
-<div class="well clearfix well-board">
-<h2><%= board.name %></h2>
-<ul class="list-unstyled">
-<% board.lists.each do |list| %>
-<li class="list-name"><h4><span class="glyphicon glyphicon-triangle-right"></span><%= " " + list.name %></h4></li>
-<% end %>
-</ul>
-<%= button_to 'Delete board', board, method: :delete, 
-data: { confirm: 'Are you sure? This will delete all the lists and tasks on this board.' },
-class: "btn btn-danger pull-right" %>
-</div>
+  <div class="well clearfix well-board">
+    <h2><%= board.name %></h2>
+    <ul class="list-unstyled">
+      <% board.lists.each do |list| %>
+      <li class="list-name"><h4><span class="glyphicon glyphicon-triangle-right"></span><%= " " + list.name %></h4></li>
+      <% end %>
+    </ul>
+    <%= button_to 'Delete board', board, method: :delete, 
+    data: { confirm: 'Are you sure? This will delete all the lists and tasks on this board.' },
+    class: "btn btn-danger pull-right" %>
+  </div>
 </a>
