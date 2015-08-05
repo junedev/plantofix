@@ -246,6 +246,20 @@ h4 {
   a .list-name {
   }
 
+  .list-row {
+    overflow-x: scroll;
+  }
+
+// MAKE X-SCROLLABLE
+//   div.list-wrapper {
+//     overflow-x: auto;
+//     white-space: nowrap;
+// }
+// div.list-wrapper [class*="col"]{
+//     display: inline-block;
+//     float: none;
+// }
+
   .content {
     padding: 50px 0 50px 50px;
     h1 {
@@ -260,11 +274,15 @@ h4 {
   .well {
     padding: 20px 25px;
     margin: 0;
-    h1, h2, {
+    h1, h2, h3 {
       margin-top: 0;
     }
     &.well-board {
       margin-bottom: 50px;
+    }
+
+    &.well-list {
+      margin-top: 20px;
     }
   }
 

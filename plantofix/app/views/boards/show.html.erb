@@ -1,5 +1,5 @@
 <% set_current_board(@board) %>
-<div class="col-md-10 col-sx-12 col-md-offset-2 padding-off">
+<div class="col-md-10 col-sx-12 col-md-offset-2">
   <div class="row">
     <div class="col-md-7 col-sx-12">
       <h2>Board: <%= @board.name %></h2>
@@ -9,15 +9,16 @@
         <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
         <input type="hidden" name="list[board_id]" value="<%= get_current_board["id"] %>">
         <div class="form-group">
-        <label>List name: </label>
+          <label>List name: </label>
           <input type="text" name="list[name]" class="form-control">
         </div>
         <input type="submit" value="New list", class="btn btn-primary new-list">
       </form>
     </div>
   </div>
-
-  <div class="row">
-    <%= render partial: "boards/list", collection: @board.lists %>
+  <div class="list-wrapper">
+    <div class="row list-row">
+      <%= render partial: "boards/list", collection: @board.lists %>
+    </div>
   </div>
 </div>

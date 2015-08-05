@@ -1,8 +1,6 @@
-<div class="col-md-3 col-sm-6 col-sx-12 content">
+<div class="col-lg-3 col-md-4 col-sm-6 col-sx-12">
+<div class="well well-list clearfix">
   <h3><%= list.name %></h3>
-
-  <%= button_to 'Delete', list, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-danger" %>
-
   <ul class="sortable _list<%= list.id %> list-unstyled">
     <%= render partial: "boards/task", collection: list.tasks %>
   </ul>
@@ -15,4 +13,6 @@
     <input type="hidden" name="task[list_id]" value="<%= list.id %>">
     <input type="submit" value="Add task">
   </form>
+  <%= button_to 'Delete list', list, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-danger pull-right" %>
+  </div>
 </div>
