@@ -246,10 +246,6 @@ h4 {
   a .list-name {
   }
 
-  .list-row {
-    overflow-x: scroll;
-  }
-
 // MAKE X-SCROLLABLE
 //   div.list-wrapper {
 //     overflow-x: auto;
@@ -294,6 +290,10 @@ h4 {
 
 .btn.new-list {
   border: 1px solid $color-green;
+}
+
+.margin-fix {
+  margin-top: 20px;
 }
 
 @media (min-width: $screen-sm-min) {
