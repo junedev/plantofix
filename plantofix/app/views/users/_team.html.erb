@@ -1,33 +1,38 @@
 <% if team.users.count > 1 %>
 <%# FIXME set to > 0 for debugging to see all boards %>
 
-  <h2><%= team.name %></h2>
-  <ul class="list-group">
+<h2><%= team.name %></h2>
+<ul class="list-group">
   <% team.users.each do |user| %>
 
   <li class="list-group-item clearfix">
     <%= user.username %>
-      <span class="pull-right">
-    <form method="post" action="/team_member?user_id=<%= user.id %>&team_id=<%= team.id %>">
-      <input type="hidden" name="_method" value="delete" />
-      <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
-
-        </form>
-      </span>
+    <span class="pull-right">
+      <form method="post" action="/team_member?user_id=<%= user.id %>&team_id=<%= team.id %>">
+        <input type="hidden" name="_method" value="delete" />
+        <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+        <button type="submit" class="btn btn-neutral red" data-confirm="Are you sure?" >
+          <span class="glyphicon glyphicon-remove"></span>
+        </button>
+      </form>
+    </span>
   </li>
 
- <% end %>
+  <% end %>
+  <li class="list-group-item clearfix">
   <form action="/team_member?team_id=<%= team.id %>" method="POST">
     <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
-    <input type="text" name="user[username]" class="list-group-item clearfix">
-        <button type="submit" class="btn btn-neutral" data-confirm="Are you sure?" >
-          <span class="glyphicon glyphicon-plus"></span>
-        </button>
+    <input type="text" name="user[username]" class="form-control add-team-member pull-left">
+    <button type="submit" class="btn btn-neutral green pull-right">
+      <span class="glyphicon glyphicon-plus"></span>
+    </button>
   </form>
+  </li>
 
 </ul>
 
-
-<%= button_to 'Delete team', team, method: :delete, class: "btn btn-danger pull-right add-margin", 
-data: { confirm: 'Are you sure? All team boards will become your private boards.' } %>
-<% end %>
+<div class="clearfix">
+  <%= button_to 'Delete team', team, method: :delete, class: "btn btn-danger pull-right", 
+  data: { confirm: 'Are you sure? All team boards will become your private boards.' } %>
+  </div>
+  <% end %>
