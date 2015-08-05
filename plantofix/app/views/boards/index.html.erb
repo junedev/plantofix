@@ -1,16 +1,27 @@
-<h1>All boards</h1>
-<%= render current_user.boards %>
-<form action="/boards" method="POST">
-  <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
-  <input type="text" name="board[name]">
-  <select name="board[team_id]">
-  <% private_team = Team.find_private_team(current_user) %>
-    <option value="<%= private_team.id %>"><%= private_team.name %></option>
-    <% current_user.teams.each do |team| %>
+<% private_boards = current_user.boards.select {|board| board.is_private_board? } %>
+<% shared_boards = current_user.boards.select {|board| !board.is_private_board? } %>
+<div class="col-md-4 col-sx-12 col-md-offset-2 content first">
+  <h1>Private boards</h1>
+  <%= render private_boards %>
+</div>
+
+<div class="col-md-4 col-sx-12 content">
+  <h1>Shared boards</h1>
+  <%= render shared_boards %>
+</div>
+<div class="col-md-2 col-sx-12 content">
+  <form action="/boards" method="POST">
+    <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+    <input type="text" name="board[name]">
+    <select name="board[team_id]">
+      <% private_team = Team.find_private_team(current_user) %>
+      <option value="<%= private_team.id %>"><%= private_team.name %></option>
+      <% current_user.teams.each do |team| %>
       <% if team.users.count > 1 %>
       <option value="<%= team.id %>"><%= team.name %></option>
       <% end %>
-    <% end %>
-  </select>
-  <input type="submit" value="Add board">
-</form>
+      <% end %>
+    </select>
+    <input type="submit" value="Add board">
+  </form>
+</div>

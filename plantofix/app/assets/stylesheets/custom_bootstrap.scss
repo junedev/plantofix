@@ -52,6 +52,11 @@ html, body, .container-fluid, .row {
   padding: 0;
 }
 
+a, a:hover, a:active {
+  text-decoration: none;
+  color: $text-color;
+}
+
 // BUTTONS
 
 .btn-primary, .btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active {
@@ -196,13 +201,13 @@ input.add-team-member, input.add-team-member:focus {
 .logo {
   height: 80px;
   &.cover-page{
-  padding: 0 15px;
-  position: absolute;
-  top: 0;
-  left: 0;
-  background-color: rgba(255,255,255,0.5);
-  margin: 20px;
-}
+    padding: 0 15px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: rgba(255,255,255,0.5);
+    margin: 20px;
+  }
   font-size: 48px;
   ul {
     padding: 0;
@@ -229,24 +234,35 @@ input.add-team-member, input.add-team-member:focus {
 }
 
 @media (min-width: $screen-md-min) {
+  a .list-name {
+  }
+
   .content {
     padding: 50px;
+    h1 {
+      margin-top: 0;
+      margin-bottom: 20px;
+    }
     &.first {
-      padding: 50px 50px 50px 60px;
+      padding: 50px 0 50px 60px;
     }
   }
 
   .well {
     padding: 20px 25px;
     margin: 0;
-    &.first {
-      margin-right: -50px;
-    }
-
-    h1 {
+    h1, h2, {
       margin-top: 0;
     }
+    &.well-board {
+      margin-bottom: 50px;
+    }
   }
+
+  .well:hover {
+    background-color: darken($well-bg, 5%);
+  }
+
 }
 
 // NAVIGATION
@@ -259,6 +275,7 @@ input.add-team-member, input.add-team-member:focus {
 
 @media (min-width: $screen-sm-min) {
   .navbar {
+    padding: 0;
     margin-bottom: 0;
     position: fixed;
     top: 0;
