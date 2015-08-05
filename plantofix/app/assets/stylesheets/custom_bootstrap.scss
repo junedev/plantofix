@@ -6,29 +6,54 @@
   border-radius: 0 !important;
 }
 
+.btn-primary, .btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active {
+  background-color: $color-green;
+  border: 0;
+}
+
+.btn-danger, .btn-danger:hover, .btn-danger:focus, .btn-danger:active, .btn-danger.active {
+  background-color: $color-red;
+  border: 0;
+}
+
 .btn:active:focus, .btn:focus {
   outline: none !important;
 }
 
-.btn-danger {
-  background-color: $color-red;
-    &:hover {
+.btn-danger:hover {
   background-color: darken( $color-red, 10% );
-  }
 }
 
-.btn-primary {
-  background-color: $color-green;
-  &:hover {
+
+.btn-primary:hover {
   background-color: darken( $color-green, 10% );
+}
+
+.btn.add-margin {
+  margin: 20px 0;
+}
+
+.btn-neutral {
+  margin: -2px -4px;
+  background-color: $well-border;
+  padding: 5px 6px 0 6px;
+  .span {
+    font-size: 2em;
+  }
+  &:hover {
+    background-color: $color-red;
+    color: white;
   }
 }
 
-
+.list-group-item {
+  vertical-align: middle;
+}
 
 .full-container{
   position: relative;
   height: 100%;
+  overflow: hidden;
 }
 
 .full::before {
@@ -172,18 +197,18 @@
 
 .page-container {
   padding: 25px;
-  height: 100vh;
+  min-height: 100vh;
   margin-left: 310px;
 }
 
 .sidebar {
-border: 1px solid black;
-height: 100vh;
+  border: 1px solid black;
+  height: 100vh;
 }
 
 @media (min-width: $screen-md-min) {
   .well {
-    height: 100%;
+    min-height: 85vh;
     padding: 20px 25px;
     margin: 25px;
     h1 {

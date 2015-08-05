@@ -1,9 +1,17 @@
 <div class="page-container">
-<div class="col-md-6 col-sx-12">
+
+  <div class="col-md-6 col-sx-12">
     <div class="well">
-      <h1>Teams</h1>
-      <%= render partial: "users/team", collection: current_user.teams %>
-      <input type="button" value="Add team" class="btn btn-primary add_team_button">
+      <h1>Account details</h1>
+      <%= render 'form' %>
+      <%= button_to 'Delete account', current_user, method: :delete, data: { confirm: 'Are you sure? All your private boards will be lost.' }, class: "btn btn-danger pull-right add-margin" %>
+    </div>
+  </div>
+
+  <div class="col-md-6 col-sx-12">
+    <div class="well">
+      <h1>Teams <span class="btn btn-primary add_team_button pull-right">Add team</span></h1>
+
       <form action="/teams" method="POST" class="add_team_form" style="display: none">
         <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
         <div class="form-group">
@@ -16,14 +24,11 @@
         </div>
         <input type="submit" value="Add team" class="btn btn-primary">
       </form>
+
+      <%= render partial: "users/team", collection: current_user.teams %>
+
     </div>
   </div>
 
-  <div class="col-md-6 col-sx-12">
-    <div class="well">
-      <h1>Account details</h1>
-      <%= render 'form' %>
-      <%= button_to 'Delete account', current_user, method: :delete, data: { confirm: 'Are you sure? All your private boards will be lost.' }, class:"btn btn-danger" %>
-    </div>
-  </div>
+
 </div>

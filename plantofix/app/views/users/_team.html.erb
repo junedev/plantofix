@@ -2,26 +2,32 @@
 <%# FIXME set to > 0 for debugging to see all boards %>
 
   <h2><%= team.name %></h2>
-<%= button_to 'Delete', team, method: :delete, data: { confirm: 'Are you sure? All team boards will become your private boards.' } %>
+  <ul class="list-group">
   <% team.users.each do |user| %>
-    <div class="input-group list-item">
-    <input type="text" class="form-control" value="<%= user.username %>" disabled>
-      <span class="input-group-btn">
+
+  <li class="list-group-item clearfix">
+    <%= user.username %>
+      <span class="pull-right">
     <form method="post" action="/team_member?user_id=<%= user.id %>&team_id=<%= team.id %>">
       <input type="hidden" name="_method" value="delete" />
       <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
-      <button type="submit" data-confirm="Are you sure?" class="btn btn-danger">
-        <span class="glyphicon glyphicon-remove"></span>
-      </button>
-    </form>
-     </span>
-    </div>
-  <% end %>
 
+        </form>
+      </span>
+  </li>
+
+ <% end %>
   <form action="/team_member?team_id=<%= team.id %>" method="POST">
     <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
-    <input type="text" name="user[username]">
-    <input type="submit" value="Add team member">
+    <input type="text" name="user[username]" class="list-group-item clearfix">
+        <button type="submit" class="btn btn-neutral" data-confirm="Are you sure?" >
+          <span class="glyphicon glyphicon-plus"></span>
+        </button>
   </form>
 
+</ul>
+
+
+<%= button_to 'Delete team', team, method: :delete, class: "btn btn-danger pull-right add-margin", 
+data: { confirm: 'Are you sure? All team boards will become your private boards.' } %>
 <% end %>
