@@ -1,21 +1,36 @@
-<aside class="col-lg-2 sidebar ">
-  <ul class="nav nav-sidebar">
-    <li><a href="/users/<%= current_user.id %>">Manage account & teams</a></li>
-    <li><a href="/boards">My boards</a></li>
-    <% current_user.boards.each do |board| %>
-    <li><a href="/boards/<%= board.id %>"><%= board.name %></a></li>
-    <% end %>
+  <nav class="col-md-2 navbar navbar-default" role="navigation">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
 
-      <% flash.each do |name, message| %>
-      <li>
+    <div class="collapse navbar-collapse">
+      <a href="/boards" class="navbar-brand">
+      <%= render "layouts/logo" %>
+      </a>
+      <ul class="nav nav-stacked">
+        <li><a href="/users/<%= current_user.id %>">Account & teams</a></li>
+        <li><a href="/boards">Boards</a></li>
+    <% current_user.boards.each do |board| %>
+    <li><a href="/boards/<%= board.id %>"><span class="glyphicon glyphicon-triangle-right" aria-hidden="true"></span><%= " "+board.name %></a></li>
+    <% end %>
+    <% flash.each do |name, message| %>
+    <li>
       <div class="flash-message flash-message-<%= name %>">
         <%= message %>
       </div>
     </li>
-      <% end %>
+    <% end %>
     <li>
-      <%= link_to "Logout", "/logout", method: :delete, data: {confirm: "Are you sure?"} %>
+      <%= link_to "Logout", "/logout", method: :delete, data: {confirm: "Are you sure?"}, class: "logout" %>
     </li>
-  </ul>
-</aside>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </nav>
+
+<!-- <div class="col-md-10">
+</div> -->
 

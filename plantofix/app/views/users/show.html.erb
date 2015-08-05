@@ -1,34 +1,29 @@
-<div class="page-container">
-
-  <div class="col-md-6 col-sx-12">
-    <div class="well">
-      <h1>Account details</h1>
-      <%= render 'form' %>
-      <%= button_to 'Delete account', current_user, method: :delete, data: { confirm: 'Are you sure? All your private boards will be lost.' }, class: "btn btn-danger pull-right add-margin" %>
-    </div>
+<div class="col-md-5 col-sx-12 col-md-offset-2 content first">
+  <div class="well first clearfix">
+    <h1>Account details</h1>
+    <%= render 'form' %>
+    <%= button_to 'Delete account', current_user, method: :delete, data: { confirm: 'Are you sure? All your private boards will be lost.' }, class: "btn btn-danger pull-right add-margin" %>
   </div>
+</div>
 
-  <div class="col-md-6 col-sx-12">
-    <div class="well">
-      <h1>Teams <span class="btn btn-primary add_team_button pull-right">Add team</span></h1>
+<div class="col-md-5 col-sx-10 content">
+  <div class="well">
+    <h1>Teams <span class="btn btn-primary add_team_button pull-right">Add team</span></h1>
 
-      <form action="/teams" method="POST" class="add_team_form" style="display: none">
-        <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
-        <div class="form-group">
-          <label for="team_name">Team name</label>
-          <input type="text" name="team[name]" id="team-name" class="form-control"> 
-        </div>
-        <div class="form-group">
-          <label for="team_username">Username of one other team member</label>
-          <input type="text" name="team[username]" class="form-control" id="team_username">
-        </div>
-        <input type="submit" value="Add team" class="btn btn-primary">
-      </form>
+    <form action="/teams" method="POST" class="add_team_form" style="display: none">
+      <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+      <div class="form-group">
+        <label for="team_name">Team name</label>
+        <input type="text" name="team[name]" id="team-name" class="form-control"> 
+      </div>
+      <div class="form-group">
+        <label for="team_username">Username of one other team member</label>
+        <input type="text" name="team[username]" class="form-control" id="team_username">
+      </div>
+      <input type="submit" value="Add team" class="btn btn-primary">
+    </form>
 
-      <%= render partial: "users/team", collection: current_user.teams %>
+    <%= render partial: "users/team", collection: current_user.teams %>
 
-    </div>
   </div>
-
-
 </div>

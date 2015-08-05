@@ -1,3 +1,4 @@
+<div class="col-md-10 col-sx-12 col-md-offset-2 content">
 <% set_current_board(@board) %>
 <h2>This is board <%= @board.name %></h2>
 <form action="/lists" method="POST" >
@@ -9,4 +10,5 @@
 
 <div class="row">
 <%= render partial: "boards/list", collection: @board.lists %>
+</div>
 </div>
