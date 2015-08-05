@@ -1,27 +1,40 @@
 <% private_boards = current_user.boards.select {|board| board.is_private_board? } %>
 <% shared_boards = current_user.boards.select {|board| !board.is_private_board? } %>
-<div class="col-md-4 col-sx-12 col-md-offset-2 content first">
-  <h1>Private boards</h1>
-  <%= render private_boards %>
+<div class="col-md-7 col-sx-12 col-md-offset-2 padding-off">
+  <div class="row">
+    <div class="col-md-6 col-sx-12 content">
+      <h1>Private boards</h1>
+      <%= render private_boards %>
+    </div>
+
+    <div class="col-md-6 col-sx-12 content">
+      <h1>Shared boards</h1>
+      <%= render shared_boards %>
+    </div>
+  </div>
 </div>
 
-<div class="col-md-4 col-sx-12 content">
-  <h1>Shared boards</h1>
-  <%= render shared_boards %>
-</div>
-<div class="col-md-2 col-sx-12 content">
-  <form action="/boards" method="POST">
-    <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
-    <input type="text" name="board[name]">
-    <select name="board[team_id]">
-      <% private_team = Team.find_private_team(current_user) %>
-      <option value="<%= private_team.id %>"><%= private_team.name %></option>
-      <% current_user.teams.each do |team| %>
-      <% if team.users.count > 1 %>
-      <option value="<%= team.id %>"><%= team.name %></option>
-      <% end %>
-      <% end %>
-    </select>
-    <input type="submit" value="Add board">
-  </form>
+<div class="col-md-3 col-sx-12 content last">
+  <h1>New board</h1>
+  <div class="well clearfix">
+    <form action="/boards" method="POST">
+      <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+      <div class="form-group">
+        <label class="label-control">Board name</label>
+        <input type="text" name="board[name]" class="form-control">
+      </div>
+      <div class="form-group">
+        <select name="board[team_id]" class="form-control">
+          <% private_team = Team.find_private_team(current_user) %>
+          <option value="<%= private_team.id %>"><%= private_team.name %></option>
+          <% current_user.teams.each do |team| %>
+          <% if team.users.count > 1 %>
+          <option value="<%= team.id %>"><%= team.name %></option>
+          <% end %>
+          <% end %>
+        </select>
+      </div>
+      <input type="submit" value="Add board", class="btn btn-primary pull-right">
+    </form>
+  </div>
 </div>
