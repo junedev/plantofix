@@ -10,53 +10,31 @@ def new_position
   @position+=1
 end
 
-u1 = User.create!(username: "User1", email: "user1@gmail.com", password: "user1", password_confirmation: "user1")
-u2 = User.create!(username: "User2", email: "user2@gmail.com", password: "user2", password_confirmation: "user2")
+u1 = User.create!(username: "Franziska", email: "franziska@gmail.com", password: "franziska", password_confirmation: "franziska")
+u2 = User.create!(username: "Alex", email: "alex@gmail.com", password: "alex", password_confirmation: "alex")
+u3 = User.create!(username: "Hassan", email: "hassan@gmail.com", password: "hassan", password_confirmation: "hassan")
+u4 = User.create!(username: "Rane", email: "rane@gmail.com", password: "rane", password_confirmation: "rane")
 
-t1 = u1.teams.create!(name:"Team1 with 2 users")
-t1.users << u2
+t1 = u1.teams.create!(name:"Private board")
+u2.teams.create!(name:"Private board")
+u3.teams.create!(name:"Private board")
+u4.teams.create!(name:"Private board")
 
-t2 = u1.teams.create!(name:"Private board")
-t3 = u2.teams.create!(name:"Private board")
+b1 = t1.boards.create!(name: "Shopping list")
+b2 = t1.boards.create!(name: "Project ideas")
 
-b1 = t1.boards.create!(name: "Team board")
-b2 = t2.boards.create!(name: "Private board for user1")
-b3 = t3.boards.create!(name: "Private board for user2")
+l1 = b1.lists.create!(name:"Groceries")
+l2 = b1.lists.create!(name:"Drug store")
+l3 = b1.lists.create!(name:"Next week")
 
-l1 = b1.lists.create!(name:"First list on teamboard")
-l2 = b1.lists.create!(name:"Second list on teamboard")
-l3 = b2.lists.create!(name:"First list on private board for User1")
-l4 = b2.lists.create!(name:"Second list on private board for User1")
-l5 = b3.lists.create!(name:"First list on private board for user2")
+l4 = b1.lists.create!(name:"Initial ideas")
+l5 = b1.lists.create!(name:"Might be good")
+l6 = b1.lists.create!(name:"Rubbish")
 
-task1 = l1.tasks.create!(name:"Task 1 on first team list for user1", color: "white", position: new_position)
-task1.assignee = u1
-task1.save
+l1.tasks.create!(name:"Watermelon", color: "white", position: new_position, assignee_id: u1.id)
+l1.tasks.create!(name:"Apples", color: "white", position: new_position, assignee_id: u1.id)
+l1.tasks.create!(name:"Toast", color: "white", position: new_position, assignee_id: u1.id)
 
-task2 = l1.tasks.create!(name:"Task 2 on first team list for user2", color: "white", position: new_position)
-task2.assignee = u2
-task2.save
-
-task3 = l3.tasks.create!(name:"Task 1 on first private list for user1", color: "white", position: new_position)
-task3.assignee = u1
-task3.save
-
-task4 = l3.tasks.create!(name:"Another task 5", color: "white",position: new_position)
-task4.assignee = u1
-task4.save
-
-task4 = l4.tasks.create!(name:"Another task 6", color: "white", position: new_position)
-task4.assignee = u1
-task4.save
-
-task4 = l5.tasks.create!(name:"Another task 7", color: "white", position: new_position)
-task4.assignee = u2
-task4.save
-
-task4 = l5.tasks.create!(name:"Another task 8", color: "white", position: new_position)
-task4.assignee = u2
-task4.save
-
-task4 = l5.tasks.create!(name:"Another task 9", color: "white", position: new_position)
-task4.assignee = u2
-task4.save
+l2.tasks.create!(name:"Shampoo", color: "white", position: new_position, assignee_id: u1.id)
+l2.tasks.create!(name:"Tooth brush", color: "white", position: new_position, assignee_id: u1.id)
+l2.tasks.create!(name:"Vitamins", color: "white", position: new_position, assignee_id: u1.id)

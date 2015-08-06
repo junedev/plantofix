@@ -221,7 +221,7 @@ input.add-team-member, input.add-team-member:focus {
   font-size: $font-size-base*10;
 }
 
-.cover-button {
+a.cover-button, .cover-button {
   background-color: rgba(255,255,255,0.1);
   color: $cover-font-color;
   border: 1px solid $cover-font-color;
