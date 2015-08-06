@@ -1,6 +1,5 @@
 $( function(){
-
-  $('.text-description').autoResize();
+  var task_item = null;
 
   $(".task_edit").on("click", function(){
     $(this).parent().siblings(".task_edit_box").show();
@@ -22,8 +21,16 @@ $( function(){
   });
 
   $('#task_description_modal').on('shown.bs.modal', function () {
-    // $('#myInput').focus()
   })
+
+    $('.colorp').colorpicker({color: "#ffffff"}).on('changeColor', function(ev) {
+      $(this).siblings(".task_item").css("background-color", ev.color.toHex())
+    });
+
+    $('.colorp').colorpicker().on('hidePicker', function(ev) {
+      $(this).siblings(".task_edit_box").find(".new_color").val(ev.color.toHex())
+      $(this).siblings(".task_edit_box").find(".submit_edit").click();
+    });
 
 });
 

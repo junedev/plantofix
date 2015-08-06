@@ -20,6 +20,7 @@
       <input type="hidden" name="_method" value="patch" />
       <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>"/>
       <input type="hidden" name="task[list_id]" value="<%= task.list_id %>" class="list_id_input">
+      <input type="hidden" name="task[color]" value="<%= task.color %>" class="new_color">
       <input type="hidden" name="task[position]" value="<%= task.position %>" class="task_position_input">
       <textarea name="task[name]" class="form-control well task_item"><%= task.name %></textarea>
       <button type="submit" name="commit" class="btn task-btn submit_edit">
@@ -31,7 +32,7 @@
       <span class="glyphicon glyphicon-new-window"></span>
     </button>
 
-    <button class="btn task-btn-down out-btn" style="display:none">
+    <button class="btn task-btn-down out-btn colorp">
       <span class="glyphicon glyphicon-pencil"></span>
     </button>
   </div>
