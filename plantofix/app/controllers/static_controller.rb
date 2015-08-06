@@ -9,9 +9,9 @@ class StaticController < ApplicationController
 
   def import_data
     position = 1
-    username = params["github"]["username"]
-    repo = params["github"]["repo"]
-    boardname = params["github"]["boardname"]
+    username = github_params["username"]
+    repo = github_params["repo"]
+    boardname = github_params["boardname"]
     team = Team.find_private_team(current_user)
 
     github = Github.new
@@ -31,8 +31,10 @@ class StaticController < ApplicationController
         list = board.lists.create!(name:"ToDo")
         board.lists.create!(name:"In progress")
         board.lists.create!(name:"Done")
+
         imported_data.each do |issue|
-          list.tasks.create!(name: issue["title"], color: "white", position: position += 1)
+          list.tasks.create!(name: issue["title"], color: "white", position: position += 1, 
+            description: issue["body"], color: check_for_color(issue))
         end
         redirect_to board_path(board)
       else
@@ -41,10 +43,18 @@ class StaticController < ApplicationController
     end
   end
 
+
   private
+
+  def check_for_color(object)
+    if object.labels.length > 0
+      return "#"+object["labels"][0]["color"]
+    else
+      return "white"
+    end
+  end
     # Never trust parameters from the scary internet, only allow the white list through.
-    # def github_params
-    #   params.require(:github).permit(:username,:repo,:boardname)
-    # end
-    # FIXME
+    def github_params
+      params.require(:github).permit(:username,:repo,:boardname)
+    end
   end

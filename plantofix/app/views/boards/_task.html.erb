@@ -28,26 +28,27 @@
       </button>
     </form>
 
+    <button type="button" class="btn task-btn-up out-btn" data-toggle="modal" data-target="#myModal">
+      <span class="glyphicon glyphicon-new-window"></span>
+    </button>
+
     <button class="btn task-btn-down out-btn" style="display:none">
       <span class="glyphicon glyphicon-pencil"></span>
     </button>
   </div>
-  <% if task.description %>
-    <button type="button" class="btn task-btn-up out-btn" data-toggle="modal" data-target="#myModal">
-      <span class="glyphicon glyphicon-new-window"></span>
-    </button>
+
   <div class="modal fade" id="myModal" tabindex="-1" role="dialog">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
-          <h4 class="modal-title" id="myModalLabel">Title</h4>
+          <h4 class="modal-title" id="myModalLabel"><%= task.name %></h4>
         </div>
         <div class="modal-body">
-          TEXT
+        <%= task.description %>
         </div>
       </div>
     </div>
   </div>
-  <% end %>
+
 </li>
