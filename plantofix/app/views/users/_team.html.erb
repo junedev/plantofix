@@ -11,8 +11,8 @@
       <form method="post" action="/team_member?user_id=<%= user.id %>&team_id=<%= team.id %>">
         <input type="hidden" name="_method" value="delete" />
         <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
-        <button type="submit" class="btn btn-neutral red" data-confirm="Are you sure?" >
-          <span class="glyphicon glyphicon-remove"></span>
+        <button type="submit" class="btn btn-neutral task-btn red" data-confirm="Are you sure?" >
+          <span class="glyphicon glyphicon-trash"></span>
         </button>
       </form>
     </span>
@@ -23,7 +23,7 @@
   <form action="/team_member?team_id=<%= team.id %>" method="POST">
     <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
     <input type="text" name="user[username]" class="form-control add-team-member pull-left">
-    <button type="submit" class="btn btn-neutral green pull-right">
+    <button type="submit" class="btn btn-neutral task-btn green pull-right">
       <span class="glyphicon glyphicon-plus"></span>
     </button>
   </form>

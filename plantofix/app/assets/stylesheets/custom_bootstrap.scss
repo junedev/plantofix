@@ -92,22 +92,22 @@ a, a:hover, a:active {
 
 .btn-neutral {
   margin: -2px -4px;
-  background-color: $well-border;
+  // background-color: $well-border;
   padding: 5px 6px 0 6px;
   .span {
     font-size: 2em;
   }
 }
 
-.green:hover {
-  background-color: $color-green;   
-  color: white;
-}
+// .green:hover {
+//   background-color: $color-green;   
+//   color: white;
+// }
 
-.red:hover {
-  background-color: $color-red;   
-  color: white;
-}
+// .red:hover {
+//   background-color: $color-red;   
+//   color: white;
+// }
 
 .task-btn-up {
   position: absolute;
@@ -344,11 +344,6 @@ h4 {
 
 // NAVIGATION
 
-li.logout {
-  position: absolute !important;
-  bottom: 0 !important;
-  width: 100%;
-}
 
 .navbar a {
   font-weight: 600;
@@ -386,6 +381,11 @@ li.logout {
 }
 
 @media (min-width: $screen-sm-min) {
+li.logout {
+  position: absolute !important;
+  bottom: 0 !important;
+  width: 100%;
+}
   .navbar {
     padding: 0;
     margin-bottom: 0;
