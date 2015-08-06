@@ -254,7 +254,13 @@ input.add-team-member, input.add-team-member:focus {
   position: relative;
   min-height: 70px;
   background-color: white;
-  padding: 5px 40px 5px 5px !important;
+  padding: 5px !important;
+}
+
+.text-padding {
+  margin-right: 40px;
+  word-break: break-word;
+  cursor:default;
 }
 
 .task_item_box {
@@ -273,7 +279,7 @@ ul.sortable {
 .submit_edit, .submit_edit.active, .sumbit_edit:focus, .sumbit_edit:active:focus, .sumbit_edit:visited {
   background: none !important;
   position: absolute;
-  top: 1px;
+  bottom: 1px;
   right: 1px;
 }
 
@@ -409,5 +415,11 @@ li.logout {
 }
 
 textarea {
+  padding-right: 40px;
   max-width: 100%;
+  word-break: break-word;
+  padding-left: 40px !important;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
 }

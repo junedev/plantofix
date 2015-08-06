@@ -13,10 +13,4 @@ class Board < ActiveRecord::Base
     end
   end
 
-  def self.import(username, repo)
-    
-    puts username
-    puts repo
-  end
-
 end

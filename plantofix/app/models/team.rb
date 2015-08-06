@@ -7,6 +7,7 @@ class Team < ActiveRecord::Base
     user.teams.each do |team|
       return team if (team.name == "Private board") && (team.users.count==1)
       # FIXME make "private board" string a constant in the app
+      # FIXME should be a method of a user
     end
   end
 end

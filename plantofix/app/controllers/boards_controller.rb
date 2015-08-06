@@ -18,7 +18,6 @@ class BoardsController < ApplicationController
   def create
     @board = Board.new(board_params)
     if @board.save
-      @board.lists.create!(name:"New list")
       redirect_to boards_path
     else
       render redirect_to boards_path, alert: 'Board could not be created.'

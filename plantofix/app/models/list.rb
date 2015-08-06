@@ -10,15 +10,6 @@ class List < ActiveRecord::Base
   end
 
   def sorted_tasks
-    puts "*"*50
-    puts "*"*50
-    puts "*"*50
-    self.tasks.each do |i|
-      puts i.position
-    end
-    puts "*"*50
-    puts "*"*50
-    puts "*"*50
     self.tasks.sort_by{|task| task.position }
   end
 end
