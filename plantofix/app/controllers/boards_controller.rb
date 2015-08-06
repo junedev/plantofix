@@ -20,7 +20,7 @@ class BoardsController < ApplicationController
     if @board.save
       redirect_to boards_path
     else
-      render redirect_to boards_path, alert: 'Board could not be created.'
+      redirect_to boards_path, alert: 'Board could not be created.'
     end
   end
 

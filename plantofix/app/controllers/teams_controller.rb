@@ -1,5 +1,5 @@
 class TeamsController < ApplicationController
-
+  before_action :authenticate
   # Save new team to database
   # POST /teams
   def create
@@ -11,7 +11,7 @@ class TeamsController < ApplicationController
         @team.users << current_user
         @team.users << team_member
         @team.save
-        redirect_to user_path(current_user), notice: 'Team was successfully created.'
+        redirect_to user_path(current_user)
       else
         redirect_to user_path(current_user), alert: 'Team could not be created.'
       end
@@ -23,7 +23,7 @@ class TeamsController < ApplicationController
     @team = Team.find(params[:id])
     redirect_to root_path unless @team.users.include?(current_user)
     if @team.update(team_params)
-      redirect_to user_path(current_user), notice: 'Team was successfully updated.'
+      redirect_to user_path(current_user)
     else
       redirect_to user_path(current_user), alert: 'Team could not be updated.'
     end
@@ -40,7 +40,7 @@ class TeamsController < ApplicationController
         delete_team_member(@team.id, user.id) unless user == current_user
       end
     end
-    redirect_to user_path(current_user), notice: 'Team was successfully deleted.'
+    redirect_to user_path(current_user)
   end
 
   def team_member_destroy

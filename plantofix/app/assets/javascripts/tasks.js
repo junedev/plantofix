@@ -1,5 +1,4 @@
 $( function(){
-  var task_item = null;
 
   $(".task_edit").on("click", function(){
     $(this).parent().siblings(".task_edit_box").show();

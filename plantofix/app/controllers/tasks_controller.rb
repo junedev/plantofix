@@ -1,5 +1,5 @@
 class TasksController < ApplicationController
-
+  before_action :authenticate
   # Save new task to database
   # POST /tasks
   def create

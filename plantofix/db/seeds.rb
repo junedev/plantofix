@@ -27,9 +27,9 @@ l1 = b1.lists.create!(name:"Groceries")
 l2 = b1.lists.create!(name:"Drug store")
 l3 = b1.lists.create!(name:"Next week")
 
-l4 = b1.lists.create!(name:"Initial ideas")
-l5 = b1.lists.create!(name:"Might be good")
-l6 = b1.lists.create!(name:"Rubbish")
+l4 = b2.lists.create!(name:"Initial ideas")
+l5 = b2.lists.create!(name:"Might be good")
+l6 = b2.lists.create!(name:"Rubbish")
 
 l1.tasks.create!(name:"Watermelon", color: "white", position: new_position, assignee_id: u1.id)
 l1.tasks.create!(name:"Apples", color: "white", position: new_position, assignee_id: u1.id)

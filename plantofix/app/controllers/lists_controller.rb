@@ -1,4 +1,5 @@
 class ListsController < ApplicationController
+  before_action :authenticate
   # Save new list to database
   # POST /lists
   def create

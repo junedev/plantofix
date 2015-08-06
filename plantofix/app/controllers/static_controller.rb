@@ -1,4 +1,5 @@
 class StaticController < ApplicationController
+  before_action :authenticate, only [:import_data]
 
   def home
     redirect_to boards_path if current_user

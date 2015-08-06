@@ -1,4 +1,4 @@
-@import url(http://fonts.googleapis.com/css?family=Inconsolata:400,700);
+@import url(//fonts.googleapis.com/css?family=Inconsolata:400,700);
 @font-face {
   font-family:'Roboto';
   src:font-url('Roboto-Medium.ttf');
@@ -15,6 +15,8 @@ $font-family-base: 'Roboto', sans-serif;
 $font-size-base: 16px;
 $color-red: #AF2424;
 $color-green: #0F8033;
+$btn-primary-bg: $color-green;
+$btn-danger-bg: $color-red;
 @import "bootstrap-sprockets";
 @import "bootstrap";
 @import "bootstrap-colorpicker";
