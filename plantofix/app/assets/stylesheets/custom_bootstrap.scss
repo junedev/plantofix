@@ -111,14 +111,14 @@ a, a:hover, a:active {
 
 .task-btn-up {
   position: absolute;
-  top: 0;
-  right: 0;
+  top: 1px;
+  right: 1px;
 }
 
-form.task-form {
+form.task-form-delete {
   position: absolute !important;
-  bottom: 0 !important;
-  right: 0 !important;
+  bottom: 1px !important;
+  right: 1px !important;
 }
 
 .task-btn, .task-btn:active, .task-btn.active, .task-btn:focus, .task-btn:active:focus{
@@ -160,15 +160,15 @@ input.add-team-member, input.add-team-member:focus {
   .cover.sign-up {
    width: 50%;
    font-size: $font-size-base*1.5;
- }
- .sign-up .form-group {
-  input {
-    font-size: $font-size-base*1.5;
   }
-  label {
-    font-weight: normal;
+  .sign-up .form-group {
+    input {
+      font-size: $font-size-base*1.5;
+    }
+    label {
+      font-weight: normal;
+    }
   }
-}
 }
 
 @media (min-width: $screen-lg-min) {
@@ -252,22 +252,29 @@ input.add-team-member, input.add-team-member:focus {
 
 .task_item {
   position: relative;
-  // width: 100%;
   min-height: 70px;
   background-color: white;
   padding: 5px 40px 5px 5px !important;
-  // text-align: left;
-  // vertical-align: top;
-  // display: inline-block;
 }
 
 .task_item_box {
   margin-bottom: 10px;
 }
 
+.task-form-edit {
+  position: relative;
+}
+
 ul.sortable {
   min-height: 20px;
   padding-bottom: 10px;
+}
+
+.submit_edit, .submit_edit.active, .sumbit_edit:focus, .sumbit_edit:active:focus, .sumbit_edit:visited {
+  background: none !important;
+  position: absolute;
+  top: 1px;
+  right: 1px;
 }
 
 // MAIN PAGES
@@ -289,35 +296,35 @@ h4 {
 //     float: none;
 // }
 
-  .content {
-    padding: 50px 0 50px 50px;
-    h1 {
-      margin-top: 0;
-      margin-bottom: 20px;
-    }
-    &.last {
-      padding: 50px;
-    }
+.content {
+  padding: 50px 0 50px 50px;
+  h1 {
+    margin-top: 0;
+    margin-bottom: 20px;
+  }
+  &.last {
+    padding: 50px;
+  }
+}
+
+.well {
+  padding: 20px 25px;
+  margin: 0;
+  h1, h2, h3 {
+    margin-top: 0;
+  }
+  &.well-board {
+    margin-bottom: 50px;
   }
 
-  .well {
-    padding: 20px 25px;
-    margin: 0;
-    h1, h2, h3 {
-      margin-top: 0;
-    }
-    &.well-board {
-      margin-bottom: 50px;
-    }
-
-    &.well-list {
-      margin-top: 20px;
-    }
+  &.well-list {
+    margin-top: 20px;
   }
+}
 
-  .well-board:hover {
-    background-color: darken($well-bg, 5%);
-  }
+.well-board:hover {
+  background-color: darken($well-bg, 5%);
+}
 
 }
 
@@ -330,17 +337,52 @@ h4 {
 }
 
 @media (min-width: $screen-sm-min) {
-form.new-list {
-  margin-top: 22px;
+  form.new-list {
+    margin-top: 22px;
   }
 }
 
 // NAVIGATION
 
-.logout {
-  // position: absolute;
-  // bottom: 0;
-  // left: 0;
+li.logout {
+  position: absolute !important;
+  bottom: 0 !important;
+  width: 100%;
+}
+
+.navbar a {
+  font-weight: 600;
+}
+
+.username {
+  padding-left: 15px;
+  padding-bottom: 15px;
+}
+
+.navbar-brand ul {
+  margin: 0;
+  margin-top: -25px;
+  padding-top: 0;
+}
+
+.navbar-brand {
+  width: 100%;
+}
+
+.logo-text-nav {
+  font-size: 2em;
+  font-weight: bold;
+  padding-left: 18px;
+  margin: 0;
+  font-family: 'Inconsolata', ;
+}
+
+.gspace {
+  padding-right: 5px;
+}
+
+.logout .gspace {
+  padding-right: 8px;
 }
 
 @media (min-width: $screen-sm-min) {
@@ -357,6 +399,12 @@ form.new-list {
     overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
     background-color: #f5f5f5;
     border-right: 1px solid #eee;
+  }
+  .bg-danger {
+    color: white;
+    background-color: $color-red;
+    margin: 15px;
+    padding: 10px;
   }
 }
 

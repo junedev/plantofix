@@ -8,24 +8,26 @@
   </div>
 
   <div class="collapse navbar-collapse">
-    <a href="/boards" class="navbar-brand">
+    <p class="logo-text-nav">Plan-to-Fix</p>
+    <a href="/boards" class="navbar-brand logo">
     <%= render "layouts/logo" %>
     </a>
     <ul class="nav nav-stacked">
+      <li class="username"><i>Logged in as <%= current_user.username %></i></li>
       <li><a href="/users/<%= current_user.id %>">Account & teams</a></li>
       <li><a href="/boards">Boards</a></li>
   <% current_user.boards.each do |board| %>
-  <li><a href="/boards/<%= board.id %>"><span class="glyphicon glyphicon-triangle-right" aria-hidden="true"></span><%= " "+board.name %></a></li>
+  <li><a href="/boards/<%= board.id %>"><span class="glyphicon glyphicon-triangle-right gspace" aria-hidden="true"></span><%= board.name %></a></li>
   <% end %>
   <% flash.each do |name, message| %>
   <li>
-    <div class="flash-message flash-message-<%= name %>">
+    <div class="bg-danger flash-message-<%= name %>">
       <%= message %>
     </div>
   </li>
   <% end %>
-  <li>
-    <%= link_to "Logout", "/logout", method: :delete, data: {confirm: "Are you sure?"}, class: "logout" %>
+  <li class="logout">
+  <a data-confirm="Are you sure?" rel="nofollow" data-method="delete" href="/logout"><span class="glyphicon glyphicon-log-out gspace"></span>Logout</a>
   </li>
     </ul>
   </div>

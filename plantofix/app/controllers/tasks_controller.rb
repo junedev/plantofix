@@ -5,7 +5,7 @@ class TasksController < ApplicationController
   def create
     @task = Task.new(task_params)
      if @task.save
-      redirect_to "/boards/#{get_current_board["id"]}", notice: 'Task was successfully created.'
+      redirect_to "/boards/#{get_current_board["id"]}"
     else
       redirect_to "/boards/#{get_current_board["id"]}", alert: 'Task could not be created.'
     end
@@ -15,7 +15,7 @@ class TasksController < ApplicationController
   def update
     @task = Task.find(params[:id])
     if @task.update(task_params)
-      redirect_to "/boards/#{get_current_board["id"]}", notice: 'Task was successfully updated.'
+      redirect_to "/boards/#{get_current_board["id"]}"
     else
       redirect_to "/boards/#{get_current_board["id"]}", alert: 'Task could not be updated.'
     end
@@ -25,7 +25,7 @@ class TasksController < ApplicationController
   def destroy
     @task = Task.find(params[:id])
     @task.destroy
-    redirect_to "/boards/#{get_current_board["id"]}", notice: 'Task was successfully deleted.'
+    redirect_to "/boards/#{get_current_board["id"]}"
   end
 
   private

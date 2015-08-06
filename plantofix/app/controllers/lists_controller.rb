@@ -4,7 +4,7 @@ class ListsController < ApplicationController
   def create
     @list = List.new(list_params)
      if @list.save
-      redirect_to "/boards/#{get_current_board["id"]}", notice: 'List was successfully created.'
+      redirect_to "/boards/#{get_current_board["id"]}"
     else
       redirect_to "/boards/#{get_current_board["id"]}", alert: 'List could not be created.'
     end
@@ -14,7 +14,7 @@ class ListsController < ApplicationController
   def update
     @list = List.find(params[:id])
     if @list.update(list_params)
-      redirect_to "/boards/#{get_current_board["id"]}", notice: 'List was successfully updated.'
+      redirect_to "/boards/#{get_current_board["id"]}"
     else
       redirect_to "/boards/#{get_current_board["id"]}", alert: 'List could not be updated.'
     end
@@ -24,7 +24,7 @@ class ListsController < ApplicationController
   def destroy
     @list = List.find(params[:id])
     @list.destroy
-    redirect_to "/boards/#{get_current_board["id"]}", notice: 'List was successfully deleted.'
+    redirect_to "/boards/#{get_current_board["id"]}"
   end
 
   private

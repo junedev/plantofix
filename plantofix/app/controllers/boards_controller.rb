@@ -18,7 +18,7 @@ class BoardsController < ApplicationController
     @board = Board.new(board_params)
     if @board.save
       @board.lists.create!(name:"New list")
-      redirect_to boards_path, notice: 'Board was successfully created.'
+      redirect_to boards_path
     else
       render redirect_to boards_path, alert: 'Board could not be created.'
     end
@@ -28,7 +28,7 @@ class BoardsController < ApplicationController
   def update
     @board = Board.find(params[:id])
     if @board.update(board_params)
-      redirect_to board_path, notice: 'Board was successfully updated.'
+      redirect_to board_path
     else
       redirect_to board_path, alert: 'Board could not be updated.'
     end
@@ -38,7 +38,7 @@ class BoardsController < ApplicationController
   def destroy
     @board = Board.find(params[:id])
     @board.destroy
-    redirect_to boards_path, notice: 'Board was successfully deleted.'
+    redirect_to boards_path
   end
 
   private

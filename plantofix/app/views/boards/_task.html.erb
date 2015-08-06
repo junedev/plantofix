@@ -5,7 +5,7 @@
     <button id="test_id" class="btn task_edit task-btn-up task-btn">
       <span class="glyphicon glyphicon-edit"></span>
     </button>
-    <form method="post" action="/tasks/<%= task.id %>" class="task-form">
+    <form method="post" action="/tasks/<%= task.id %>" class="task-form-delete">
       <input type="hidden" name="_method" value="delete" />
       <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
       <button type="submit" data-confirm="Are you sure?" class="btn task-btn-down task-btn">
@@ -14,16 +14,15 @@
     </form>
   </div>
 
-  <div class="task_edit_box well task_item " style="display:none">
-  <form action="/tasks/<%= task.id %>" method="post" class="task-form">
+<!--   <div class="task_edit_box well task_item " style="display:none"> -->
+  <form action="/tasks/<%= task.id %>" method="post" class="task_edit_box task-form-edit" style="display:none">
       <input type="hidden" name="_method" value="patch" />
       <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
       <input type="hidden" name="task[assignee_id]" value="<%= task.assignee_id %>">
       <input type="hidden" name="task[list_id]" value="<%= task.list_id %>" class="list_id_input">
-      <textarea name="task[name]" class="form-control"><%= task.name %></textarea>
-      <button type="submit" name="commit" class="btn task-btn task-btn-up submit_edit">
+      <textarea name="task[name]" class="form-control well task_item"><%= task.name %></textarea>
+      <button type="submit" name="commit" class="btn task-btn submit_edit">
         <span class="glyphicon glyphicon-ok"></span>
       </button>
     </form>
-  </div>
 </li>
