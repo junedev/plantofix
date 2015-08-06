@@ -12,7 +12,7 @@ class StaticController < ApplicationController
     username = github_params["username"]
     repo = github_params["repo"]
     boardname = github_params["boardname"]
-    team = Team.find_private_team(current_user)
+    team_id = github_params["team_id"]
 
     github = Github.new
     issues = Github::Client::Issues.new
@@ -23,11 +23,19 @@ class StaticController < ApplicationController
       redirect_to "/import", alert: "Import not successful."
     else
       if imported_data.length > 0
-        if boardname
+
+        if Team.find(team_id)
+          team = Team.find(team_id)
+        else
+          team = current_user.find_private_team
+        end
+
+        if boardname && boardname.length >= 1
           board = team.boards.create!(name:boardname)
         else
           board = team.boards.create!(name:repo)
         end
+
         list = board.lists.create!(name:"ToDo")
         board.lists.create!(name:"In progress")
         board.lists.create!(name:"Done")
@@ -55,6 +63,6 @@ class StaticController < ApplicationController
   end
     # Never trust parameters from the scary internet, only allow the white list through.
     def github_params
-      params.require(:github).permit(:username,:repo,:boardname)
+      params.require(:github).permit(:username,:repo,:boardname,:team_id)
     end
   end

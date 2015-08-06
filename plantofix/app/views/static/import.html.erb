@@ -2,6 +2,7 @@
   <div class="well">
     <h1>GitHub import</h1>
     <h3>Import the issues from your public GitHub repo</h3>
+
     <form action="/import" method="POST">
       <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
       <div class="form-group">
@@ -16,7 +17,21 @@
         <label>Name for new board (optional)</label>
         <input type="text" name="github[boardname]" class="form-control">
       </div>
+
+      <div class="form-group">
+        <select name="github[team_id]" class="form-control">
+          <% private_team = current_user.find_private_team %>
+          <option value="<%= private_team.id %>"><%= private_team.name %></option>
+          <% current_user.teams.each do |team| %>
+            <% if team.users.count > 1 %>
+            <option value="<%= team.id %>"><%= team.name %></option>
+          <% end %>
+          <% end %>
+        </select>
+      </div>
+
       <button type="submit" class="btn btn-primary">Import data</button>
     </form>
+
   </div>
 </div>

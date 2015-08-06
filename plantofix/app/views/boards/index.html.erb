@@ -25,7 +25,7 @@
       </div>
       <div class="form-group">
         <select name="board[team_id]" class="form-control">
-          <% private_team = Team.find_private_team(current_user) %>
+          <% private_team = current_user.find_private_team %>
           <option value="<%= private_team.id %>"><%= private_team.name %></option>
           <% current_user.teams.each do |team| %>
           <% if team.users.count > 1 %>

@@ -295,7 +295,7 @@ input.add-team-member, input.add-team-member:focus {
 }
 
 ul.sortable {
-  min-height: 70px;
+  min-height: 80px;
   padding-bottom: 10px;
 }
 
@@ -348,6 +348,7 @@ h4 {
 
   &.well-list {
     margin-top: 20px;
+    margin-bottom: 50px;
   }
 }
 

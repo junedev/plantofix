@@ -43,7 +43,7 @@ class UsersController < ApplicationController
   def destroy
     @user = User.find(params[:id])
     redirect_to root_path unless authenticate_user(@user)
-    private_team = Team.find_private_team(@user)
+    private_team = current_user.find_private_team
     private_team.boards.destroy_all
     private_team.destroy
     session[:user_id] = nil
