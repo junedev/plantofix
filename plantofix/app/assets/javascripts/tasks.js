@@ -1,5 +1,7 @@
 $( function(){
 
+  $('.text-description').autoResize();
+
   $(".task_edit").on("click", function(){
     $(this).parent().siblings(".task_edit_box").show();
     $(this).closest('.task_item').hide();
@@ -19,10 +21,10 @@ $( function(){
     }
   });
 
-  $('#myModal').on('shown.bs.modal', function () {
-    $('#myInput').focus()
+  $('#task_description_modal').on('shown.bs.modal', function () {
+    // $('#myInput').focus()
   })
-  
+
 });
 
 function find_list_id(array){
@@ -44,16 +46,16 @@ function new_position($item){
     pos2=parseFloat($item.next().find(".task_position_input").val());
   }
 
-  var current_pos = parseFloat($item.find(".task_position_input").val())
+  var current_pos = parseFloat($item.find(".task_position_input").val());
 
-  if(pos1+pos2===0){
+  if(pos1+pos2 === 0){
     return current_pos;
-  } else if(pos1===0){
-    return 0.0;
+  } else if(pos1 === 0){
+    return pos2/2;
   } else if(pos2 === 0) {
-    return current_pos + 1.0
+    return (pos1 + 1.0);
   } else {
-    return (parseFloat(pos1) + parseFloat(pos2))/2
+    return (parseFloat(pos1) + parseFloat(pos2))/2;
   }
 }
 

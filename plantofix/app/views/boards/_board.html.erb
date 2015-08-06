@@ -1,9 +1,17 @@
 <a href="/boards/<%= board.id %>" >
   <div class="well clearfix well-board">
     <h2><%= board.name %></h2>
+        <% unless board.is_private_board? %>
+        <i>Shared with team <%= board.team.name %></i>
+        <% end %>
     <ul class="list-unstyled">
       <% board.lists.each do |list| %>
-      <li class="list-name"><h4><span class="glyphicon glyphicon-triangle-right gspace"></span><%= list.name %></h4></li>
+      <li class="list-name">
+        <h4>
+          <span class="glyphicon glyphicon-triangle-right gspace"></span>
+          <%= list.name %>
+        </h4>
+      </li>
       <% end %>
     </ul>
     <%= button_to 'Delete board', board, method: :delete, 

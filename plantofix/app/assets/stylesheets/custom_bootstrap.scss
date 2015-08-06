@@ -144,6 +144,10 @@ form.task-form-delete {
   }
 }
 
+.btn.save {
+  margin-top: 20px;
+}
+
 // INPUT FIELDS
 
 input.add-team-member, input.add-team-member:focus {
@@ -411,6 +415,11 @@ h4 {
     bottom: 0 !important;
     width: 100%;
   }
+
+textarea.description {
+  height: auto;
+}
+
   .navbar {
     padding: 0;
     margin-bottom: 0;
@@ -434,11 +443,6 @@ h4 {
 }
 
 textarea {
-  padding-right: 40px;
   max-width: 100%;
   word-break: break-word;
-  padding-left: 40px !important;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
 }
