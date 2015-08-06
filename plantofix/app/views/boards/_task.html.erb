@@ -14,7 +14,6 @@
     </form>
   </div>
 
-<!--   <div class="task_edit_box well task_item " style="display:none"> -->
   <form action="/tasks/<%= task.id %>" method="post" class="task_edit_box task-form-edit" style="display:none">
       <input type="hidden" name="_method" value="patch" />
       <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>"/>

@@ -9,4 +9,6 @@ Rails.application.routes.draw do
   delete "/logout", to: "sessions#destroy"
   delete "/team_member", to: "teams#team_member_destroy"
   post "/team_member", to: "teams#team_member_add"
+  get "/import", to: "static#import"
+  post "/import", to: "static#import_data"
 end

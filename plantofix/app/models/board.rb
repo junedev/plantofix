@@ -12,4 +12,11 @@ class Board < ActiveRecord::Base
       false
     end
   end
+
+  def self.import(username, repo)
+    
+    puts username
+    puts repo
+  end
+
 end

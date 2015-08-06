@@ -1,0 +1,18 @@
+<div class="col-sm-5 col-sx-12 col-sm-offset-2 content">
+  <div class="well">
+    <h1>GitHub import</h1>
+    <h3>Import the issues from your public GitHub repo</h3>
+    <form action="/import" method="POST">
+      <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+      <div class="form-group">
+        <label>GitHub Username</label>
+        <input type="text" name="github[username]" class="form-control">
+      </div>
+      <div class="form-group">
+        <label>GitHub repository name</label>
+        <input type="text" name="github[repo]" class="form-control">
+      </div>
+      <button type="submit" class="btn btn-primary">Import data</button>
+    </form>
+  </div>
+</div>

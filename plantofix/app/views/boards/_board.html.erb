@@ -3,7 +3,7 @@
     <h2><%= board.name %></h2>
     <ul class="list-unstyled">
       <% board.lists.each do |list| %>
-      <li class="list-name"><h4><span class="glyphicon glyphicon-triangle-right"></span><%= " " + list.name %></h4></li>
+      <li class="list-name"><h4><span class="glyphicon glyphicon-triangle-right gspace"></span><%= list.name %></h4></li>
       <% end %>
     </ul>
     <%= button_to 'Delete board', board, method: :delete, 

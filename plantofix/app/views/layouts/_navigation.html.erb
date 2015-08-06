@@ -19,6 +19,7 @@
   <% current_user.boards.each do |board| %>
   <li><a href="/boards/<%= board.id %>"><span class="glyphicon glyphicon-triangle-right gspace" aria-hidden="true"></span><%= board.name %></a></li>
   <% end %>
+  <li><a href="/import">GitHub import</a></li>
   <% flash.each do |name, message| %>
   <li>
     <div class="bg-danger flash-message-<%= name %>">
