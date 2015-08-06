@@ -9,6 +9,7 @@ class BoardsController < ApplicationController
   # GET /boards/1
   def show
     @board = Board.find(params[:id])
+    redirect_to root_path unless @board.users.include?(current_user)
     redirect_to root_path unless logged_in?
   end
 
@@ -27,6 +28,7 @@ class BoardsController < ApplicationController
   # PATCH/PUT /boards/1
   def update
     @board = Board.find(params[:id])
+    redirect_to root_path unless @board.users.include?(current_user)
     if @board.update(board_params)
       redirect_to board_path
     else
@@ -37,6 +39,7 @@ class BoardsController < ApplicationController
   # DELETE /boards/1
   def destroy
     @board = Board.find(params[:id])
+    redirect_to root_path unless @board.users.include?(current_user)
     @board.destroy
     redirect_to boards_path
   end

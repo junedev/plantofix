@@ -31,6 +31,7 @@ class UsersController < ApplicationController
   # PATCH/PUT /users/1
   def update
     @user = User.find(params[:id])
+    redirect_to root_path unless authenticate_user(@user)
     if (@user && @user.authenticate(params[:user][:password])) && @user.update(user_params) 
       redirect_to @user, notice: 'Account details were successfully updated.'
     else
@@ -41,6 +42,7 @@ class UsersController < ApplicationController
   # DELETE /users/1
   def destroy
     @user = User.find(params[:id])
+    redirect_to root_path unless authenticate_user(@user)
     private_team = Team.find_private_team(@user)
     private_team.boards.destroy_all
     private_team.destroy

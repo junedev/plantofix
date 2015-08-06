@@ -21,6 +21,7 @@ class TeamsController < ApplicationController
   # PATCH/PUT /teams/1
   def update
     @team = Team.find(params[:id])
+    redirect_to root_path unless @team.users.include?(current_user)
     if @team.update(team_params)
       redirect_to user_path(current_user), notice: 'Team was successfully updated.'
     else
@@ -31,6 +32,7 @@ class TeamsController < ApplicationController
   # DELETE /teams/1
   def destroy
     @team = Team.find(params[:id])
+    redirect_to root_path unless @team.users.include?(current_user)
     if @team.boards.count == 0
       @team.destroy
     else
