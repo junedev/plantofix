@@ -1,22 +1,22 @@
-<li id="task<%= task.id %>" class="task_item_box ui-state-default"> 
-
-  <div class="well task_item" style="background-color:<%= task.color %>">
-  <p class="text-padding">
-    <%= task.name %>
-    </p>
-    <button id="test_id" class="btn task_edit task-btn-up task-btn">
-      <span class="glyphicon glyphicon-edit"></span>
-    </button>
-    <form method="post" action="/tasks/<%= task.id %>" class="task-form-delete">
-      <input type="hidden" name="_method" value="delete" />
-      <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
-      <button type="submit" data-confirm="Are you sure?" class="btn task-btn-down task-btn">
-        <span class="glyphicon glyphicon-trash"></span>
+<li id="task<%= task.id %>" class="ui-state-default"> 
+  <div class="task-container task_item_box">
+    <div class="well task_item" style="background-color:<%= task.color %>">
+      <p class="text-padding">
+        <%= task.name %>
+      </p>
+      <button id="test_id" class="btn task_edit task-btn-up task-btn">
+        <span class="glyphicon glyphicon-edit"></span>
       </button>
-    </form>
-  </div>
+      <form method="post" action="/tasks/<%= task.id %>" class="task-form-delete">
+        <input type="hidden" name="_method" value="delete" />
+        <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+        <button type="submit" data-confirm="Are you sure?" class="btn task-btn-down task-btn">
+          <span class="glyphicon glyphicon-trash"></span>
+        </button>
+      </form>
+    </div>
 
-  <form action="/tasks/<%= task.id %>" method="post" class="task_edit_box task-form-edit" style="display:none">
+    <form action="/tasks/<%= task.id %>" method="post" class="task_edit_box task-form-edit" style="display:none">
       <input type="hidden" name="_method" value="patch" />
       <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>"/>
       <input type="hidden" name="task[assignee_id]" value="<%= task.assignee_id %>">
@@ -26,5 +26,28 @@
       <button type="submit" name="commit" class="btn task-btn submit_edit">
         <span class="glyphicon glyphicon-ok"></span>
       </button>
-  </form>
+    </form>
+
+    <button class="btn task-btn-down out-btn" style="display:none">
+      <span class="glyphicon glyphicon-pencil"></span>
+    </button>
+  </div>
+  <% if task.description %>
+    <button type="button" class="btn task-btn-up out-btn" data-toggle="modal" data-target="#myModal">
+      <span class="glyphicon glyphicon-new-window"></span>
+    </button>
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
+          <h4 class="modal-title" id="myModalLabel">Title</h4>
+        </div>
+        <div class="modal-body">
+          TEXT
+        </div>
+      </div>
+    </div>
+  </div>
+  <% end %>
 </li>

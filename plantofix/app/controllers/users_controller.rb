@@ -21,7 +21,7 @@ class UsersController < ApplicationController
     if @user.save
       session[:user_id] = @user.id
       team = @user.teams.create!(name: "Private board")
-      redirect_to @user, notice: 'User was successfully created.'
+      redirect_to @user
     else
       render :new
     end
@@ -33,7 +33,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     redirect_to root_path unless authenticate_user(@user)
     if (@user && @user.authenticate(params[:user][:password])) && @user.update(user_params) 
-      redirect_to @user, notice: 'Account details were successfully updated.'
+      redirect_to @user
     else
       redirect_to @user, alert: 'Account details could not be changed.'
     end

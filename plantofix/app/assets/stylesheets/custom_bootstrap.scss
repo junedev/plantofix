@@ -99,19 +99,15 @@ a, a:hover, a:active {
   }
 }
 
-// .green:hover {
-//   background-color: $color-green;   
-//   color: white;
-// }
-
-// .red:hover {
-//   background-color: $color-red;   
-//   color: white;
-// }
-
 .task-btn-up {
   position: absolute;
   top: 1px;
+  right: 1px;
+}
+
+.task-btn-down {
+  position: absolute;
+  bottom: 1px;
   right: 1px;
 }
 
@@ -127,6 +123,21 @@ form.task-form-delete {
   color: $well-border;
   &:hover {
     color: $text-color !important;
+  }
+}
+
+.out-btn, .out-btn:active, .out-btn.active, .out-btn:focus, .out-btn:active:focus{
+  box-shadow: none;
+  padding: 0;
+  padding-top: 5px;
+  background: none !important;
+  box-shadow: none;
+  span {
+    // font-size: 1em;
+    color: darken($well-border,5%);
+    &:hover {
+      color: $text-color !important;
+    }
   }
 }
 
@@ -160,15 +171,15 @@ input.add-team-member, input.add-team-member:focus {
   .cover.sign-up {
    width: 50%;
    font-size: $font-size-base*1.5;
+ }
+ .sign-up .form-group {
+  input {
+    font-size: $font-size-base*1.5;
   }
-  .sign-up .form-group {
-    input {
-      font-size: $font-size-base*1.5;
-    }
-    label {
-      font-weight: normal;
-    }
+  label {
+    font-weight: normal;
   }
+}
 }
 
 @media (min-width: $screen-lg-min) {
@@ -249,6 +260,16 @@ input.add-team-member, input.add-team-member:focus {
     }
   }
 }
+
+.task-container {
+  position: relative;
+  padding-right: 30px !important;
+}
+
+// .task-container {
+//   position: relative;
+//   padding-right: 0 !important;
+// }
 
 .task_item {
   position: relative;
@@ -387,11 +408,11 @@ h4 {
 }
 
 @media (min-width: $screen-sm-min) {
-li.logout {
-  position: absolute !important;
-  bottom: 0 !important;
-  width: 100%;
-}
+  li.logout {
+    position: absolute !important;
+    bottom: 0 !important;
+    width: 100%;
+  }
   .navbar {
     padding: 0;
     margin-bottom: 0;

@@ -18,6 +18,11 @@ $( function(){
       ui.item.find(".submit_edit").click();
     }
   });
+
+  $('#myModal').on('shown.bs.modal', function () {
+    $('#myInput').focus()
+  })
+  
 });
 
 function find_list_id(array){
@@ -51,3 +56,4 @@ function new_position($item){
     return (parseFloat(pos1) + parseFloat(pos2))/2
   }
 }
+
