@@ -2,7 +2,7 @@
   <div class="well well-list">
     <h3><%= list.name %></h3>
     <ul class="sortable _list<%= list.id %> list-unstyled">
-      <%= render partial: "boards/task", collection: list.tasks %>
+      <%= render partial: "boards/task", collection: list.sorted_tasks %>
     </ul>
 
     <form action="/tasks" method="POST">

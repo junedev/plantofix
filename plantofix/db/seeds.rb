@@ -4,7 +4,7 @@ Board.destroy_all
 User.destroy_all
 Team.destroy_all
 
-@position = 0;
+@position = 10;
 
 def new_position
   @position+=1
