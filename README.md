@@ -18,7 +18,21 @@ If you want to work together with other users on a board you can create teams of
 
 ![](./plantofix/app/assets/images/screenshot2.png)
 
+You can also import issues including their description and label color from any public GitHub repository.
+
 ---
 
 ### Techniques used
+* **Database:** The app is build on postgresql. The current version is completely AJAX free. It only uses submitting forms to update the database.
+
+* **Front-end framework:** Bootstrap is leveraged for basic styling but many pieces also require a lot of custom scss, e.g. landing page.
+
+* **Authentication:** The current version is build entirely with BCrypt for authentification as no distinct roles where required.
+
+* **Other GEMs:** 
+A gem is used to get a bootstrap compatible colorpicker. 
+The GitHub API gem allows easy access to the GitHub data.
+
+---
+
 
