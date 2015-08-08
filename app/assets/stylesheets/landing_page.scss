@@ -1,0 +1,75 @@
+.cover {
+  color: $cover-font-color;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);  
+  transform: translate(-50%, -50%);
+  text-align: center;
+  width: 100%;
+  padding: 10px;
+}
+
+@media (min-width: $screen-sm-min) {
+  .cover.sign-up {
+   width: 50%;
+   font-size: $font-size-base*1.5;
+ }
+ .sign-up .form-group {
+  input {
+    font-size: $font-size-base*1.5;
+  }
+  label {
+    font-weight: normal;
+  }
+}
+}
+
+@media (min-width: $screen-lg-min) {
+  .cover.sign-up {
+   width: 30%;
+ }
+}
+
+.sign-up .form-group {
+  text-align: left;
+  outline: none;
+  border: 0;
+  padding: 5px;
+  label {
+    padding-bottom: 5px;
+  }
+}
+
+.lead {
+  font-size: $font-size-base*2;
+  letter-spacing: 1px;
+  &#or {
+    margin-top: 20px;
+  }
+}
+
+.home_head {
+  margin-bottom: 40px;
+  font-family: 'Inconsolata', ;
+  // font-family: 'Alegreya SC', serif;
+  font-weight: 600;
+  font-size: $font-size-base*10;
+}
+
+a.cover-button, .cover-button {
+  background-color: rgba(255,255,255,0.1);
+  color: $cover-font-color;
+  border: 1px solid $cover-font-color;
+  width: 200px;
+  font-size: $font-size-base*1.5;
+  &:hover {
+    background-color: rgba(255,255,255,0.3);
+    color: $cover-font-color;
+  }
+}
+
+.sign-up .cover-button {
+  margin: 20px;
+  height: 50px;
+}

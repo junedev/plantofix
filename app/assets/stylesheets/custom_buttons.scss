@@ -1,0 +1,87 @@
+// BUTTONS
+
+.btn-primary, .btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active {
+  background-color: $color-green;
+  border: 0;
+}
+
+.btn-danger, .btn-danger:hover, .btn-danger:focus, .btn-danger:active, .btn-danger.active {
+  background-color: $color-red;
+  border: 0;
+}
+
+.btn:active:focus, .btn:focus, .close:focus, .close:active:focus {
+  outline: none !important;
+}
+
+.btn-danger:hover {
+  background-color: darken( $color-red, 10% );
+}
+
+.btn-primary:hover {
+  background-color: darken( $color-green, 10% );
+}
+
+.btn.add-margin {
+  margin: 20px 0;
+}
+
+.add-team-button {
+  margin-bottom: 20px;
+}
+
+.btn-neutral {
+  margin: -2px -4px;
+  // background-color: $well-border;
+  padding: 5px 6px 0 6px;
+  .span {
+    font-size: 2em;
+  }
+}
+
+.task-btn-up {
+  position: absolute;
+  top: 1px;
+  right: 1px;
+}
+
+.task-btn-down {
+  position: absolute;
+  bottom: 1px;
+  right: 1px;
+}
+
+form.task-form-delete {
+  position: absolute !important;
+  bottom: 1px !important;
+  right: 1px !important;
+}
+
+.task-btn, .task-btn:active, .task-btn.active, .task-btn:focus, .task-btn:active:focus{
+  box-shadow: none;
+  background:none;
+  color: $well-border;
+  &:hover {
+    color: $text-color !important;
+  }
+}
+
+.out-btn, .out-btn:active, .out-btn.active, .out-btn:focus, .out-btn:active:focus{
+  box-shadow: none;
+  padding: 0;
+  padding-top: 5px;
+  background: none !important;
+  box-shadow: none;
+  span {
+    // font-size: 1em;
+    color: darken($well-border,5%);
+    &:hover {
+      color: $text-color !important;
+    }
+  }
+}
+
+.btn.save {
+  margin-top: 20px;
+}
+
