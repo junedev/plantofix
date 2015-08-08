@@ -1,14 +1,5 @@
 @import url(//fonts.googleapis.com/css?family=Inconsolata:400,700);
-@font-face {
-  font-family:'Roboto';
-  src:font-url('Roboto-Medium.ttf');
-  font-weight: bold;
-} 
-@font-face {
-  font-family:'Roboto';
-  src:font-url('Roboto-Regular.ttf');
-  font-weight: normal;
-} 
+@import "font_roboto";
 $input-border-focus: #767171;
 $cover-font-color: #F5F6EF;
 $font-family-base: 'Roboto', sans-serif;

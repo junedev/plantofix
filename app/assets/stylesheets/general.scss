@@ -58,3 +58,11 @@ a, a:hover, a:active, a:visited, a.active {
   text-decoration: none;
   color: $text-color;
 }
+
+label {
+  font-weight: 500;
+}
+
+h1, h2, h3, h4 {
+  font-weight: 400;
+}
