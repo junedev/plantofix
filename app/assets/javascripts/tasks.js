@@ -19,7 +19,7 @@ $( function(){
     }
   });
 
-  $('#task_description_modal').on('shown.bs.modal', function () {
+  $('.task_description_modal').on('shown.bs.modal', function () {
   })
 
     $('.colorp').colorpicker({color: "#ffffff"}).on('changeColor', function(ev) {
