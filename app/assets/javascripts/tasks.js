@@ -7,13 +7,11 @@ $( function(){
 
   $(".sortable").sortable({
     connectWith: ".sortable",
-    receive: function(event, ui){
-      //only triggered when list has changed
-      var class_names = this.className.split(/\s+/);
+    // helper: "clone",
+    stop: function(event, ui){
+      var class_names = ui.item.parent().attr("class").split(/\s+/);
       ui.item.find(".list_id_input").val(find_list_id(class_names));
-    },
-    update: function(event, ui){
-      var new_pos = new_position(ui.item)
+      var new_pos = new_position(ui.item);
       ui.item.find(".task_position_input").val(new_pos);
       ui.item.find(".submit_edit").click();
     }
@@ -36,8 +34,7 @@ $( function(){
 function find_list_id(array){
   for(var i=0; i<array.length; i++){
     if(array[i].substring(0,5)==="_list"){
-      var h = array[i].substring(5,array[i].length);
-      return h;
+      return array[i].substring(5,array[i].length);
     };
   };
 }
