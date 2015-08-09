@@ -1,29 +1,11 @@
 // BUTTONS
 
-.btn-primary, .btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active {
-  background-color: $color-green;
-  border: 0;
-}
-
-.btn-danger, .btn-danger:hover, .btn-danger:focus, .btn-danger:active, .btn-danger.active {
-  background-color: $color-red;
-  border: 0;
-}
-
 .btn:active:focus, .btn:focus, .close:focus, .close:active:focus {
   outline: none !important;
 }
 
-.btn-danger:hover {
-  background-color: darken( $color-red, 10% );
-}
-
-.btn-primary:hover {
-  background-color: darken( $color-green, 10% );
-}
-
 .btn.add-margin {
-  margin: 20px 0;
+  margin-top: 5px;
 }
 
 .add-team-button {
@@ -32,7 +14,6 @@
 
 .btn-neutral {
   margin: -2px -4px;
-  // background-color: $well-border;
   padding: 5px 6px 0 6px;
   .span {
     font-size: 2em;

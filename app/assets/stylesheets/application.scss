@@ -8,6 +8,8 @@ $color-red: #AF2424;
 $color-green: #0F8033;
 $btn-primary-bg: $color-green;
 $btn-danger-bg: $color-red;
+$btn-primary-border: $color-green;
+$btn-danger-border: $color-red;
 @import "bootstrap-sprockets";
 @import "bootstrap";
 @import "bootstrap-colorpicker";
