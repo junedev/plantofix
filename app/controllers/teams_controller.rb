@@ -4,7 +4,6 @@ class TeamsController < ApplicationController
   # POST /teams
   def create
     @team = Team.new(team_params)
-    # FIXME make controller diet?
     team_member = User.find_by_username(params["team"]["username"])
     if team_member && (team_member != current_user)
       if @team.save
@@ -15,6 +14,8 @@ class TeamsController < ApplicationController
       else
         redirect_to user_path(current_user), alert: 'Team could not be created.'
       end
+    else
+      redirect_to user_path(current_user), alert: 'Team could not be created.'
     end
   end
 
@@ -52,9 +53,9 @@ class TeamsController < ApplicationController
     team = Team.find(params["team_id"])
     user = User.find_by_username(user_params["username"])
     if user && !team.users.include?(user)
-    team.users << user
-  end
-  redirect_to user_path(current_user)
+      team.users << user
+    end
+    redirect_to user_path(current_user)
   end
 
   private

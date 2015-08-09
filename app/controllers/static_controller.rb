@@ -8,61 +8,16 @@ class StaticController < ApplicationController
   def import
   end
 
-  # FIME make controller diet
   def import_data
-    position = 1
-    username = github_params["username"]
-    repo = github_params["repo"]
-    boardname = github_params["boardname"]
-    team_id = github_params["team_id"]
-
-    github = Github.new
-    issues = Github::Client::Issues.new
-
-    begin
-      imported_data = issues.list(user: username, repo: repo, state: 'open')
-    rescue
-      redirect_to "/import", alert: "Import not successful."
+    if board = Board.import(github_params)
+      redirect_to board_path(board)
     else
-      if imported_data.length > 0
-
-        if Team.find(team_id)
-          team = Team.find(team_id)
-        else
-          team = current_user.find_private_team
-        end
-
-        if boardname && boardname.length >= 1
-          board = team.boards.create!(name:boardname)
-        else
-          board = team.boards.create!(name:repo)
-        end
-
-        list = board.lists.create!(name:"ToDo")
-        board.lists.create!(name:"In progress")
-        board.lists.create!(name:"Done")
-
-        imported_data.each do |issue|
-          list.tasks.create!(name: issue["title"], color: "white", position: position += 1, 
-            description: issue["body"], color: check_for_color(issue))
-        end
-        redirect_to board_path(board)
-      else
-        redirect_to "/import", alert: "Import not successful."
-      end
+      redirect_to import_path, alert: "GitHub import not successful."
     end
   end
 
 
   private
-
-  def check_for_color(object)
-    if object.labels.length > 0
-      return "#"+object["labels"][0]["color"]
-    else
-      return "white"
-    end
-  end
     # Never trust parameters from the scary internet, only allow the white list through.
     def github_params
       params.require(:github).permit(:username,:repo,:boardname,:team_id)
