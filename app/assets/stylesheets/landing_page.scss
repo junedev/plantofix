@@ -1,23 +1,27 @@
-.cover {
-  color: $cover-font-color;
+div.cover {
+  color: $text-color;
   position: absolute;
   top: 50%;
   left: 50%;
   -webkit-transform: translate(-50%, -50%);  
   transform: translate(-50%, -50%);
   text-align: center;
-  width: 100%;
-  padding: 10px;
 }
 
 @media (min-width: $screen-sm-min) {
+  div.cover.well {
+    padding: 40px 80px;
+    p {
+      margin-bottom: 0;
+    }
+  }
   .cover.sign-up {
    width: 50%;
    font-size: $font-size-base*1.5;
  }
  .sign-up .form-group {
   input {
-    font-size: $font-size-base*1.5;
+    font-size: $font-size-base*1.3;
   }
   label {
     font-weight: normal;
@@ -50,23 +54,26 @@
 }
 
 .home_head {
-  margin-bottom: 40px;
   font-family: 'Inconsolata', ;
-  // font-family: 'Alegreya SC', serif;
   font-weight: 600;
-  font-size: $font-size-base*10;
+  font-size: $font-size-base*7;
 }
 
 a.cover-button, .cover-button {
-  background-color: rgba(255,255,255,0.1);
-  color: $cover-font-color;
-  border: 1px solid $cover-font-color;
+  background-color: inherit;
+  color: $text-color;
+  border: 1px solid $text-color;
   width: 200px;
   font-size: $font-size-base*1.5;
   &:hover {
-    background-color: rgba(255,255,255,0.3);
-    color: $cover-font-color;
+    background-color: $well-border;
+    border: 1px solid $text-color;
+    color: $text-color;
   }
+}
+
+.cover-button {
+  margin: 0 20px;
 }
 
 .sign-up .cover-button {

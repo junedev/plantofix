@@ -1,18 +1,21 @@
 .logo {
   height: 80px;
+  font-size: 50px;
   span {
     line-height: 80px;
     vertical-align: middle;
   }
   &.cover-page{
+    height: 130px;
+    font-size: 100px;
     padding: 0 15px;
-    position: absolute;
-    top: 0;
-    left: 0;
-    background-color: rgba(255,255,255,0.3);
-    margin: 20px;
+    .glyphicon-play {
+      font-size: 90px;
+    }
+    p {
+      margin-top: -30px;
+    }
   }
-  font-size: 50px;
   .glyphicon-play {
     font-size: 45px;
     color: $text-color;
@@ -24,6 +27,17 @@
     color: $color-green;
   }
 }
+
+@media (max-width: $screen-sm-max) {
+  .logo.cover-page {
+    height: 50px;
+    font-size: 50px;
+        .glyphicon-play {
+      font-size: 45px;
+    }
+  }
+}
+
 
 @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
   .navbar-brand {
