@@ -1,15 +1,15 @@
 <% set_current_board(@board) %>
 <div class="col-sm-10 col-sx-12 col-sm-offset-2">
   <div class="row">
-    <div class="col-sm-9 col-sx-12">
+    <div class="col-lg-9 col-md-8 col-sm-6 col-sx-12">
       <h2>Board: <%= @board.name %></h2>
     </div>
-    <div class="col-lg-3 col-md-4 col-sm-6 col-sx-12 clearfix">
-      <form action="/lists" method="POST" class="form-inline new-list">
+    <div class="col-lg-3 col-md-4 col-sm-6 col-sx-12">
+      <form action="/lists" method="POST" class="new-list">
         <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
         <input type="hidden" name="list[board_id]" value="<%= get_current_board["id"] %>">
-        <div class="form-group">
-          <input type="text" name="list[name]" class="form-control">
+        <div class="form-group add-list-margin">
+          <input type="text" name="list[name]" class="pull-left form-control">
         </div>
         <input type="submit" value="Add list", class="btn btn-primary new-list pull-right">
       </form>

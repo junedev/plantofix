@@ -52,7 +52,7 @@ h4 {
   }
 
 // MAKE X-SCROLLABLE
-//   div.list-wrapper {
+// div.list-wrapper {
 //     overflow-x: auto;
 //     white-space: nowrap;
 // }
@@ -105,4 +105,14 @@ h4 {
 
 .add-task {
   position: relative;
+}
+
+.add-list-margin {
+  margin-right: 100px;
+}
+
+@media (max-width: $screen-xs-max) {
+  .new-list {
+    margin-bottom: 20px;
+  }
 }
