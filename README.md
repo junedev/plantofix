@@ -37,4 +37,5 @@ You can also import issues including their description and label color from any 
   * A gem is used to get a bootstrap compatible [colorpicker](http://mjolnic.com/bootstrap-colorpicker/).
 ---
 
-
+### License
+GNU General Public License v3.0
