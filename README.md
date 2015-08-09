@@ -3,7 +3,7 @@ Project 2 WDI14 LDN - Task planning tool
 
 ### How to use the app
 
-Please sign-up for the app to be able to start using it. After login you see all your boards.
+Go to the [website](plantofix.herokuapp.com) and sign-up for the app to be able to start using it. After login you see all your boards.
 
 ![](./app/assets/images/screenshot3.png)
 
@@ -33,8 +33,8 @@ You can also import issues including their description and label color from any 
 
 * **Additional GEMs:** 
   * The key functionality of sorting tasks in and between lists is provided by [jQuery UI's sortable feature](https://jqueryui.com/sortable/). It was implemeted using the gem jquery-ui-rails.
-	* The [GitHub API gem](https://github.com/peter-murach/github) allows easy access to the GitHub data.
-	* A gem is used to get a bootstrap compatible [colorpicker](http://mjolnic.com/bootstrap-colorpicker/).
+  * The [GitHub API gem](https://github.com/peter-murach/github) allows easy access to the GitHub data.
+  * A gem is used to get a bootstrap compatible [colorpicker](http://mjolnic.com/bootstrap-colorpicker/).
 ---
 
 

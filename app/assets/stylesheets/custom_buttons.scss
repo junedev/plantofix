@@ -32,6 +32,12 @@
   right: 1px;
 }
 
+.task-btn-middle {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+}
+
 form.task-form-delete {
   position: absolute !important;
   bottom: 1px !important;
@@ -53,12 +59,9 @@ form.task-form-delete {
   padding-top: 5px;
   background: none !important;
   box-shadow: none;
-  span {
-    // font-size: 1em;
-    color: darken($well-border,5%);
-    &:hover {
-      color: $text-color !important;
-    }
+  color: darken($well-border,5%);
+  &:hover {
+    color: $text-color !important;
   }
 }
 
