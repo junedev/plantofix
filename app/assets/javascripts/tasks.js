@@ -34,6 +34,8 @@ $( function(){
     content: pop_content
   });
 
+  $(".color-btn").on("click",)
+
   // $('.colorp').colorpicker({color: "#ffffff"}).on('changeColor', function(ev) {
   //   $(this).siblings(".task_item").css("background-color", ev.color.toHex())
   // });
