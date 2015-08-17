@@ -21,9 +21,6 @@ $( function(){
         contentType: 'application/json',
         data: JSON.stringify(updateData)
       })
-      // .done(function(result){
-      //   console.log(result);
-      // });
     }
   });
 
@@ -53,8 +50,15 @@ $('.colorp').colorpicker({color: "#ffffff"}).on('changeColor', function(ev) {
 });
 
 $('.colorp').colorpicker().on('hidePicker', function(ev) {
-  $(this).siblings(".task_edit_box").find(".new_color").val(ev.color.toHex())
-  $(this).siblings(".task_edit_box").find(".submit_edit").click();
+  $(this).siblings(".task_edit_box").find(".new_color").val(ev.color.toHex()) 
+      var updateData = { task: { color: ev.color.toHex() }}
+      $.ajax({
+        url:'http://localhost:3000/tasks/'+$(this).closest("li").data().id,
+        type:'put',
+        dataType: 'json',
+        contentType: 'application/json',
+        data: JSON.stringify(updateData)
+      })
 });
 
 
