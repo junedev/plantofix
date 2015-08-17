@@ -25,7 +25,7 @@ class TasksController < ApplicationController
   def destroy
     @task = Task.find(params[:id])
     @task.destroy
-    redirect_to "/boards/#{get_current_board["id"]}"
+    render nothing: true, status: :ok
   end
 
   private

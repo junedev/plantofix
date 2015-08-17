@@ -7,13 +7,10 @@
       <button id="test_id" class="btn task_edit task-btn-up task-btn">
         <span class="glyphicon glyphicon-edit"></span>
       </button>
-      <form method="post" action="/tasks/<%= task.id %>" class="task-form-delete">
-        <input type="hidden" name="_method" value="delete" />
-        <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
-        <button type="submit" data-confirm="Are you sure?" class="btn task-btn-down task-btn">
+        <button type="submit" data-id="<%= task.id %>" 
+        data-confirm="Are you sure?" class="btn task-btn-down task-btn task_delete">
           <span class="glyphicon glyphicon-trash"></span>
         </button>
-      </form>
     </div>
 
     <form action="/tasks/<%= task.id %>" method="post" class="task_edit_box task-form-edit" style="display:none">

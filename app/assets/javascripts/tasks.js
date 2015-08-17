@@ -47,6 +47,19 @@ $( function(){
     $(this).siblings(".task_edit_box").find(".submit_edit").click();
   });
 
+
+  // AJAX test
+  $(".task_delete").on("click", function(){
+    var that = this;
+    event.preventDefault();
+    $.ajax({
+      url:'http://localhost:3000/tasks/'+$(this).data().id,
+      type:'delete'
+    }).done(function(){
+      $(that).closest("li").remove();   
+    });
+  });
+
 });
 
 function find_list_id(array){
@@ -79,4 +92,5 @@ function new_position($item){
     return (parseFloat(pos1) + parseFloat(pos2))/2;
   }
 }
+
 
