@@ -7,13 +7,22 @@ $( function(){
 
   $(".sortable").sortable({
     connectWith: ".sortable",
-    // helper: "clone",
     stop: function(event, ui){
-      var class_names = ui.item.parent().attr("class").split(/\s+/);
-      ui.item.find(".list_id_input").val(find_list_id(class_names));
-      var new_pos = new_position(ui.item);
-      ui.item.find(".task_position_input").val(new_pos);
-      ui.item.find(".submit_edit").click();
+      var updateData = {
+        task: {
+          list_id: ui.item.parent().data().id,
+          position: new_position(ui.item)
+        }
+      }
+      $.ajax({
+        url:'http://localhost:3000/tasks/'+ui.item.data().id,
+        type:'put',
+        dataType: 'json',
+        contentType: 'application/json',
+        data: JSON.stringify(updateData)
+      }).done(function(){
+        console.log("should be done");
+      });
     }
   });
 
@@ -38,14 +47,14 @@ $( function(){
   //   var color = $(this).css("backgroundColor");
   // });
 
-  $('.colorp').colorpicker({color: "#ffffff"}).on('changeColor', function(ev) {
-    $(this).siblings(".task_item").css("background-color", ev.color.toHex())
-  });
+$('.colorp').colorpicker({color: "#ffffff"}).on('changeColor', function(ev) {
+  $(this).siblings(".task_item").css("background-color", ev.color.toHex())
+});
 
-  $('.colorp').colorpicker().on('hidePicker', function(ev) {
-    $(this).siblings(".task_edit_box").find(".new_color").val(ev.color.toHex())
-    $(this).siblings(".task_edit_box").find(".submit_edit").click();
-  });
+$('.colorp').colorpicker().on('hidePicker', function(ev) {
+  $(this).siblings(".task_edit_box").find(".new_color").val(ev.color.toHex())
+  $(this).siblings(".task_edit_box").find(".submit_edit").click();
+});
 
 
   // AJAX test
