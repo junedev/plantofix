@@ -20,30 +20,32 @@ $( function(){
   $('.task_description_modal').on('shown.bs.modal', function () {
   });
 
-  var pop_content = "<button class='btn color-btn first-color'></button>"
-  var pop_content_1 = "<button class='btn color-btn' style='background-color: "
-  var pop_content_2 = "'></button>";
-  var task_colors = ['#A59E72', '#F7D488', '#FF9B71', '#E26D5A']
-  for(var i=0; i<task_colors.length; i++){
-    pop_content += pop_content_1 + task_colors[i] + pop_content_2;
-  };
+  // var pop_content = "<button class='btn color-btn first-color'></button>"
+  // var pop_content_1 = "<button class='btn color-btn' style='background-color: "
+  // var pop_content_2 = "'></button>";
+  // var task_colors = ['#A59E72', '#F7D488', '#FF9B71', '#E26D5A']
+  // for(var i=0; i<task_colors.length; i++){
+  //   pop_content += pop_content_1 + task_colors[i] + pop_content_2;
+  // };
+  
+  // $('[data-toggle="popover"]').popover({
+  //   html: true,
+  //   content: pop_content,
+  //   container: "body"
+  // });
 
-  console.log(pop_content)
-  $('[data-toggle="popover"]').popover({
-    html: true,
-    content: pop_content
+  // $("body").on("click",".color-btn",function(){
+  //   var color = $(this).css("backgroundColor");
+  // });
+
+  $('.colorp').colorpicker({color: "#ffffff"}).on('changeColor', function(ev) {
+    $(this).siblings(".task_item").css("background-color", ev.color.toHex())
   });
 
-  $(".color-btn").on("click",)
-
-  // $('.colorp').colorpicker({color: "#ffffff"}).on('changeColor', function(ev) {
-  //   $(this).siblings(".task_item").css("background-color", ev.color.toHex())
-  // });
-
-  // $('.colorp').colorpicker().on('hidePicker', function(ev) {
-  //   $(this).siblings(".task_edit_box").find(".new_color").val(ev.color.toHex())
-  //   $(this).siblings(".task_edit_box").find(".submit_edit").click();
-  // });
+  $('.colorp').colorpicker().on('hidePicker', function(ev) {
+    $(this).siblings(".task_edit_box").find(".new_color").val(ev.color.toHex())
+    $(this).siblings(".task_edit_box").find(".submit_edit").click();
+  });
 
 });
 

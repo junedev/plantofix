@@ -32,7 +32,11 @@
       <span class="glyphicon glyphicon-new-window"></span>
     </button>
 
-    <button tabindex="0" class="btn task-btn-down out-btn colorp" data-toggle="popover" data-trigger="focus">
+<!--     <button tabindex="0" class="btn task-btn-down out-btn colorp" data-toggle="popover" >
+      <span class="glyphicon glyphicon-pencil"></span>
+    </button> -->
+
+    <button class="btn task-btn-down out-btn colorp">
       <span class="glyphicon glyphicon-pencil"></span>
     </button>
   </div>
@@ -46,18 +50,14 @@
         </div>
         <div class="modal-body">
 
-    <form action="/tasks/<%= task.id %>" method="post">
-      <input type="hidden" name="_method" value="patch" />
-      <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>"/>
-      <textarea rows="15" name="task[description]" class="form-control text-description"> <%= task.description %></textarea>
-      <button type="submit" name="commit" class="btn btn-primary save">
-        Save
-      </button>
-    </form>
-
-
-
-       
+          <form action="/tasks/<%= task.id %>" method="post">
+            <input type="hidden" name="_method" value="patch" />
+            <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>"/>
+            <textarea rows="15" name="task[description]" class="form-control text-description"> <%= task.description %></textarea>
+            <button type="submit" name="commit" class="btn btn-primary save">
+              Save
+            </button>
+          </form>
         </div>
       </div>
     </div>
