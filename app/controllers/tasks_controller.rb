@@ -5,7 +5,12 @@ class TasksController < ApplicationController
   def create
     @task = Task.new(task_params)
     if @task.save
-      redirect_to "/boards/#{get_current_board["id"]}"
+      if request.xhr?
+        #render json: @task, status: :created
+        render partial: "boards/task", locals: {task: @task}, status: :ok
+      else
+        redirect_to "/boards/#{get_current_board["id"]}"
+      end
     else
       redirect_to "/boards/#{get_current_board["id"]}", alert: 'Task could not be created.'
     end
@@ -16,7 +21,8 @@ class TasksController < ApplicationController
     @task = Task.find(params[:id])
     if @task.update(task_params)
       if request.xhr?
-        render nothing: true, status: :ok
+        @task = Task.find(params[:id])
+        render json: @task, status: :ok
       else
         redirect_to "/boards/#{get_current_board["id"]}"
       end

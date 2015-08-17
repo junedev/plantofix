@@ -20,9 +20,10 @@ $( function(){
         dataType: 'json',
         contentType: 'application/json',
         data: JSON.stringify(updateData)
-      }).done(function(){
-        console.log("should be done");
-      });
+      })
+      // .done(function(result){
+      //   console.log(result);
+      // });
     }
   });
 
@@ -68,6 +69,22 @@ $('.colorp').colorpicker().on('hidePicker', function(ev) {
       $(that).closest("li").remove();   
     });
   });
+
+  $("form.new_task_item").on("submit", function(){
+    var that = this;
+    event.preventDefault();
+    $.ajax({
+      url:'http://localhost:3000/tasks',
+      type:'post',
+      dataType: 'html',
+      //no content type json (or it breaks)
+      data: $(this).serialize()
+    }).done(function(result){
+      console.log("done reached");
+      $(that).siblings("ul").append(result);
+      $(that).find("input[name='task[name]']").val(null);
+    });
+  })
 
 });
 
