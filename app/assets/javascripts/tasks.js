@@ -1,6 +1,6 @@
 $( function(){
 
-  $(".task_edit").on("click", function(){
+  $("body").on("click",".task_edit", function(){
     $(this).parent().siblings(".task_edit_box").show();
     $(this).closest('.task_item').hide();
   });
@@ -61,7 +61,7 @@ $( function(){
     })
   });
 
-  $(".task_delete").on("click", function(){
+  $("body").on("click",".task_delete", function(){
     var that = this;
     event.preventDefault();
     $.ajax({
@@ -72,7 +72,7 @@ $( function(){
     });
   });
 
-  $("form.new_task_item").on("submit", function(){
+  $("body").on("submit", "form.new_task_item",function(){
     var that = this;
     event.preventDefault();
     $.ajax({
@@ -85,9 +85,9 @@ $( function(){
       $(that).siblings("ul").append(result);
       $(that).find("input[name='task[name]']").val(null);
     });
-  })
+  });
 
-  $("form.task_edit_box").on("submit", function(){
+  $("body").on("submit","form.task_edit_box",function(){
     var that = this;
     event.preventDefault();
     $.ajax({
@@ -100,7 +100,7 @@ $( function(){
     $(that).siblings('.task_item').children("p").html(result.name);
     $(that).siblings('.task_item').show();
     });
-  })
+  });
 
 });
 
