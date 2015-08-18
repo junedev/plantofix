@@ -15,7 +15,7 @@ $( function(){
         }
       }
       $.ajax({
-        url:'http://localhost:3000/tasks/'+ui.item.data().id,
+        url:'/tasks/'+ui.item.data().id,
         type:'put',
         dataType: 'json',
         contentType: 'application/json',
@@ -61,13 +61,11 @@ $( function(){
     })
   });
 
-
-  // AJAX test
   $(".task_delete").on("click", function(){
     var that = this;
     event.preventDefault();
     $.ajax({
-      url:'http://localhost:3000/tasks/'+$(this).data().id,
+      url:'/tasks/'+$(this).data().id,
       type:'delete'
     }).done(function(){
       $(that).closest("li").remove();   
@@ -118,13 +116,13 @@ function new_position($item){
   var pos1 = 0;
   var pos2 = 0;
   if($item.prev().length > 0){
-    pos1=parseFloat($item.prev().find(".task_position_input").val());
+    pos1=parseFloat($item.prev().data().state);
   }
   if($item.next().length > 0){
-    pos2=parseFloat($item.next().find(".task_position_input").val());
+    pos2=parseFloat($item.next().data().state);
   }
 
-  var current_pos = parseFloat($item.find(".task_position_input").val());
+  var current_pos = parseFloat($item.data().state);
 
   if(pos1+pos2 === 0){
     return current_pos;

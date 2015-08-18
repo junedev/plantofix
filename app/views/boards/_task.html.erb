@@ -1,4 +1,4 @@
-<li id="task<%= task.id %>" class="ui-state-default" data-id="<%= task.id %>"> 
+<li id="task<%= task.id %>" class="ui-state-default" data-id="<%= task.id %>" data-state="<%= task.position %>"> 
   <div class="task_item_box">
     <div class="well task_item" style="background-color:<%= task.color %>">
       <p class="text-padding">
@@ -13,7 +13,7 @@
         </button>
     </div>
 
-    <form action="/tasks/<%= task.id %>" method="post" class="task_edit_box task-form-edit" style="display:none">
+    <form action="/tasks/<%= task.id %>" method="post" data-remote="true" class="task_edit_box task-form-edit" style="display:none">
       <input type="hidden" name="_method" value="patch" />
       <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>"/>
       <textarea name="task[name]" class="form-control well task_item"><%= task.name %></textarea>
