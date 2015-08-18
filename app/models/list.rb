@@ -1,5 +1,5 @@
 class List < ActiveRecord::Base
-  @@counter = 100
+  @@counter = 10000
   belongs_to :board
   has_many :tasks, dependent: :destroy
   validates :name, length: {in: 1..40}

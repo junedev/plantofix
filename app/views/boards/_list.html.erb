@@ -1,11 +1,11 @@
 <div class="col-lg-3 col-md-4 col-sm-6 col-sx-12">
   <div class="well well-list">
     <h3><%= list.name %></h3>
-    <ul class="sortable _list<%= list.id %> list-unstyled">
+    <ul class="sortable list-unstyled" data-id="<%= list.id %>">
       <%= render partial: "boards/task", collection: list.sorted_tasks %>
     </ul>
 
-    <form action="/tasks" method="POST">
+    <form action="/tasks" method="post" class="new_task_item" data-remote="true">
       <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
       <input type="hidden" name="task[assignee_id]" value="<%= current_user.id %>">
       <input type="hidden" name="task[list_id]" value="<%= list.id %>">

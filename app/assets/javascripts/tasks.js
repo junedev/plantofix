@@ -1,19 +1,26 @@
 $( function(){
 
-  $(".task_edit").on("click", function(){
+  $("body").on("click",".task_edit", function(){
     $(this).parent().siblings(".task_edit_box").show();
     $(this).closest('.task_item').hide();
   });
 
   $(".sortable").sortable({
     connectWith: ".sortable",
-    // helper: "clone",
     stop: function(event, ui){
-      var class_names = ui.item.parent().attr("class").split(/\s+/);
-      ui.item.find(".list_id_input").val(find_list_id(class_names));
-      var new_pos = new_position(ui.item);
-      ui.item.find(".task_position_input").val(new_pos);
-      ui.item.find(".submit_edit").click();
+      var updateData = {
+        task: {
+          list_id: ui.item.parent().data().id,
+          position: new_position(ui.item)
+        }
+      }
+      $.ajax({
+        url:'/tasks/'+ui.item.data().id,
+        type:'put',
+        dataType: 'json',
+        contentType: 'application/json',
+        data: JSON.stringify(updateData)
+      })
     }
   });
 
@@ -43,8 +50,56 @@ $( function(){
   });
 
   $('.colorp').colorpicker().on('hidePicker', function(ev) {
-    $(this).siblings(".task_edit_box").find(".new_color").val(ev.color.toHex())
-    $(this).siblings(".task_edit_box").find(".submit_edit").click();
+    $(this).siblings(".task_edit_box").find(".new_color").val(ev.color.toHex());
+    var updateData = { task: { color: ev.color.toHex() }};
+    $.ajax({
+      url:'http://localhost:3000/tasks/'+$(this).closest("li").data().id,
+      type:'put',
+      dataType: 'json',
+      contentType: 'application/json',
+      data: JSON.stringify(updateData)
+    })
+  });
+
+  $("body").on("click",".task_delete", function(){
+    var that = this;
+    event.preventDefault();
+    $.ajax({
+      url:'/tasks/'+$(this).data().id,
+      type:'delete'
+    }).done(function(){
+      $(that).closest("li").remove();   
+    });
+  });
+
+  $("body").on("submit", "form.new_task_item",function(){
+    var that = this;
+    event.preventDefault();
+    $.ajax({
+      url: $(this).attr("action"),
+      type:$(this).attr("method"),
+      dataType: 'html',
+      data: $(this).serialize()
+    }).done(function(result){
+      console.log("done reached");
+      $(that).siblings("ul").append(result);
+      $(that).find("input[name='task[name]']").val(null);
+    });
+  });
+
+  $("body").on("submit","form.task_edit_box",function(){
+    var that = this;
+    event.preventDefault();
+    $.ajax({
+      url: $(this).attr("action"),
+      type: $(this).attr("method"),
+      dataType: 'json',
+      data: $(this).serialize()
+    }).done(function(result){
+    $(that).hide();
+    $(that).siblings('.task_item').children("p").html(result.name);
+    $(that).siblings('.task_item').show();
+    });
   });
 
 });
@@ -61,13 +116,13 @@ function new_position($item){
   var pos1 = 0;
   var pos2 = 0;
   if($item.prev().length > 0){
-    pos1=parseFloat($item.prev().find(".task_position_input").val());
+    pos1=parseFloat($item.prev().data().state);
   }
   if($item.next().length > 0){
-    pos2=parseFloat($item.next().find(".task_position_input").val());
+    pos2=parseFloat($item.next().data().state);
   }
 
-  var current_pos = parseFloat($item.find(".task_position_input").val());
+  var current_pos = parseFloat($item.data().state);
 
   if(pos1+pos2 === 0){
     return current_pos;
@@ -79,4 +134,5 @@ function new_position($item){
     return (parseFloat(pos1) + parseFloat(pos2))/2;
   }
 }
+
 

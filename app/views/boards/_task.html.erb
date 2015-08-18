@@ -1,4 +1,4 @@
-<li id="task<%= task.id %>" class="ui-state-default"> 
+<li id="task<%= task.id %>" class="ui-state-default" data-id="<%= task.id %>" data-state="<%= task.position %>"> 
   <div class="task_item_box">
     <div class="well task_item" style="background-color:<%= task.color %>">
       <p class="text-padding">
@@ -7,21 +7,15 @@
       <button id="test_id" class="btn task_edit task-btn-up task-btn">
         <span class="glyphicon glyphicon-edit"></span>
       </button>
-      <form method="post" action="/tasks/<%= task.id %>" class="task-form-delete">
-        <input type="hidden" name="_method" value="delete" />
-        <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
-        <button type="submit" data-confirm="Are you sure?" class="btn task-btn-down task-btn">
-          <span class="glyphicon glyphicon-trash"></span>
-        </button>
-      </form>
+      <button data-id="<%= task.id %>" 
+        data-confirm="Are you sure?" class="btn task-btn-down task-btn task_delete">
+        <span class="glyphicon glyphicon-trash"></span>
+      </button>
     </div>
 
-    <form action="/tasks/<%= task.id %>" method="post" class="task_edit_box task-form-edit" style="display:none">
+    <form action="/tasks/<%= task.id %>" method="post" data-remote="true" class="task_edit_box task-form-edit" style="display:none">
       <input type="hidden" name="_method" value="patch" />
       <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>"/>
-      <input type="hidden" name="task[list_id]" value="<%= task.list_id %>" class="list_id_input">
-      <input type="hidden" name="task[color]" value="<%= task.color %>" class="new_color">
-      <input type="hidden" name="task[position]" value="<%= task.position %>" class="task_position_input">
       <textarea name="task[name]" class="form-control well task_item"><%= task.name %></textarea>
       <button type="submit" name="commit" class="btn task-btn submit_edit">
         <span class="glyphicon glyphicon-ok"></span>

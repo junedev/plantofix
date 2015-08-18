@@ -4,8 +4,13 @@ class TasksController < ApplicationController
   # POST /tasks
   def create
     @task = Task.new(task_params)
-     if @task.save
-      redirect_to "/boards/#{get_current_board["id"]}"
+    if @task.save
+      if request.xhr?
+        #render json: @task, status: :created
+        render partial: "boards/task", locals: {task: @task}, status: :created
+      else
+        redirect_to "/boards/#{get_current_board["id"]}"
+      end
     else
       redirect_to "/boards/#{get_current_board["id"]}", alert: 'Task could not be created.'
     end
@@ -15,7 +20,12 @@ class TasksController < ApplicationController
   def update
     @task = Task.find(params[:id])
     if @task.update(task_params)
-      redirect_to "/boards/#{get_current_board["id"]}"
+      if request.xhr?
+        @task = Task.find(params[:id])
+        render json: @task, status: :ok
+      else
+        redirect_to "/boards/#{get_current_board["id"]}"
+      end
     else
       redirect_to "/boards/#{get_current_board["id"]}", alert: 'Task could not be updated.'
     end
@@ -25,7 +35,11 @@ class TasksController < ApplicationController
   def destroy
     @task = Task.find(params[:id])
     @task.destroy
-    redirect_to "/boards/#{get_current_board["id"]}"
+    if request.xhr? 
+      render nothing: true, status: :ok
+    else
+      redirect_to "/boards/#{get_current_board["id"]}"
+    end
   end
 
   private
