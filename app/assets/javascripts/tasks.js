@@ -45,21 +45,21 @@ $( function(){
   //   var color = $(this).css("backgroundColor");
   // });
 
-$('.colorp').colorpicker({color: "#ffffff"}).on('changeColor', function(ev) {
-  $(this).siblings(".task_item").css("background-color", ev.color.toHex())
-});
+  $('.colorp').colorpicker({color: "#ffffff"}).on('changeColor', function(ev) {
+    $(this).siblings(".task_item").css("background-color", ev.color.toHex())
+  });
 
-$('.colorp').colorpicker().on('hidePicker', function(ev) {
-  $(this).siblings(".task_edit_box").find(".new_color").val(ev.color.toHex()) 
-      var updateData = { task: { color: ev.color.toHex() }}
-      $.ajax({
-        url:'http://localhost:3000/tasks/'+$(this).closest("li").data().id,
-        type:'put',
-        dataType: 'json',
-        contentType: 'application/json',
-        data: JSON.stringify(updateData)
-      })
-});
+  $('.colorp').colorpicker().on('hidePicker', function(ev) {
+    $(this).siblings(".task_edit_box").find(".new_color").val(ev.color.toHex());
+    var updateData = { task: { color: ev.color.toHex() }};
+    $.ajax({
+      url:'http://localhost:3000/tasks/'+$(this).closest("li").data().id,
+      type:'put',
+      dataType: 'json',
+      contentType: 'application/json',
+      data: JSON.stringify(updateData)
+    })
+  });
 
 
   // AJAX test
@@ -78,15 +78,29 @@ $('.colorp').colorpicker().on('hidePicker', function(ev) {
     var that = this;
     event.preventDefault();
     $.ajax({
-      url:'http://localhost:3000/tasks',
-      type:'post',
+      url: $(this).attr("action"),
+      type:$(this).attr("method"),
       dataType: 'html',
-      //no content type json (or it breaks)
       data: $(this).serialize()
     }).done(function(result){
       console.log("done reached");
       $(that).siblings("ul").append(result);
       $(that).find("input[name='task[name]']").val(null);
+    });
+  })
+
+  $("form.task_edit_box").on("submit", function(){
+    var that = this;
+    event.preventDefault();
+    $.ajax({
+      url: $(this).attr("action"),
+      type: $(this).attr("method"),
+      dataType: 'json',
+      data: $(this).serialize()
+    }).done(function(result){
+    $(that).hide();
+    $(that).siblings('.task_item').children("p").html(result.name);
+    $(that).siblings('.task_item').show();
     });
   })
 
