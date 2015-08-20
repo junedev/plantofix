@@ -26,13 +26,10 @@
       <span class="glyphicon glyphicon-new-window"></span>
     </button>
 
-<!--     <button tabindex="0" class="btn task-btn-down out-btn colorp" data-toggle="popover" >
-      <span class="glyphicon glyphicon-pencil"></span>
-    </button> -->
-
-    <button class="btn task-btn-down out-btn colorp">
+    <button tabindex="0" class="btn task-btn-down out-btn colorp" data-toggle="popover" data-id="<%= task.id %>" data-trigger="focus">
       <span class="glyphicon glyphicon-pencil"></span>
     </button>
+
   </div>
 
   <div class="modal fade task_description_modal" id="task_description_<%= task.id %>" tabindex="-1" role="dialog">
