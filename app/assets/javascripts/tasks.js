@@ -76,8 +76,8 @@ $( function(){
     var that = this;
     event.preventDefault();
     $.ajax({
-      url: $(this).attr("action"),
-      type:$(this).attr("method"),
+      url: "/tasks",
+      type: "post",
       dataType: 'html',
       data: $(this).serialize()
     }).done(function(result){
