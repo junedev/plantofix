@@ -145,4 +145,3 @@ function new_position($item){
   }
 }
 
-
