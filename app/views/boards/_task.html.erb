@@ -17,7 +17,7 @@
     <form action="/tasks/<%= task.id %>" method="post" data-remote="true" class="task_edit_box task-form-edit" style="display:none">
       <input type="hidden" name="_method" value="patch" />
       <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>"/>
-      <textarea name="task[name]" class="form-control well task_item"><%= task.name %></textarea>
+      <textarea name="task[name]" class="form-control well task_item" style="background-color:<%= task.color %>"><%= task.name %></textarea>
       <button type="submit" name="commit" class="btn task-btn submit_edit">
         <span class="glyphicon glyphicon-ok"></span>
       </button>

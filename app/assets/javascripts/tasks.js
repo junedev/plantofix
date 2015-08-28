@@ -61,6 +61,8 @@ $( function(){
     });
   });
 
+
+
 $("body").on("click",".task_delete", function(){
   var that = this;
   event.preventDefault();
