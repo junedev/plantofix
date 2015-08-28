@@ -6,7 +6,6 @@ class TasksController < ApplicationController
     @task = Task.new(task_params)
     if @task.save
       if request.xhr?
-        #render json: @task, status: :created
         render partial: "boards/task", locals: {task: @task}, status: :created
       else
         redirect_to "/boards/#{get_current_board["id"]}"
