@@ -32,8 +32,9 @@ You can also import issues including their description and label color from any 
 * **Authentication:** The current version is build entirely with BCrypt for authentification as no distinct roles where required.
 
 * **Additional GEMs:** 
-  * The key functionality of sorting tasks in and between lists is provided by [jQuery UI's sortable feature](https://jqueryui.com/sortable/). It was implemeted using the gem jquery-ui-rails.
-  * The [GitHub API gem](https://github.com/peter-murach/github) allows easy access to the GitHub data.
+    * The key functionality of sorting tasks in and between lists is provided by [jQuery UI's sortable feature](https://jqueryui.com/sortable/). It was implemeted using the gem jquery-ui-rails.
+    * The [GitHub API gem](https://github.com/peter-murach/github) allows easy access to the GitHub data.
+
 ---
 
 ### License
