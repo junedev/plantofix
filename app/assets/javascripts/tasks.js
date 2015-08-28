@@ -58,9 +58,8 @@ $( function(){
         dataType: 'json',
         contentType: 'application/json',
         data: JSON.stringify({task: { color: color}})
-      }).always(function(){
-        $("body").off("click",".color-btn");
       })
+      $("body").off("click",".color-btn");
     });
   });
 
