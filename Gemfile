@@ -32,8 +32,6 @@ gem 'jquery-ui-rails'
 
 gem "github_api"
 
-gem 'bootstrap-colorpicker2-rails'
-
 # Use Unicorn as the app server
 # gem 'unicorn'
 
