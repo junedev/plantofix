@@ -62,7 +62,6 @@ $( function(){
   });
 
 
-
 $("body").on("click",".task_delete", function(){
   var that = this;
   event.preventDefault();
@@ -74,15 +73,17 @@ $("body").on("click",".task_delete", function(){
   });
 });
 
-$("body").on("submit", "form.new_task_item",function(){
+$("body").on("submit", ".new_task_item",function(){
+  console.log(this);
   var that = this;
   event.preventDefault();
   $.ajax({
-    url: $(this).attr("action"),
-    type: $(this).attr("method"),
+    url: "/tasks",
+    type:"post",
     dataType: 'html',
     data: $(this).serialize()
   }).done(function(result){
+    console.log("hello2");
     $(that).siblings("ul").append(result);
     $(that).find("input[name='task[name]']").val(null);
   });

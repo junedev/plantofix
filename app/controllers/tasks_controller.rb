@@ -4,6 +4,8 @@ class TasksController < ApplicationController
   # POST /tasks
   def create
     @task = Task.new(task_params)
+    puts "*"*50
+    puts "In controller ..."
     if @task.save
       if request.xhr?
         render partial: "boards/task", locals: {task: @task}, status: :created

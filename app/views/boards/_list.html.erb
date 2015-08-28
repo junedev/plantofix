@@ -5,17 +5,17 @@
       <%= render partial: "boards/task", collection: list.sorted_tasks %>
     </ul>
 
-    <form action="/tasks" method="post" class="new_task_item" data-remote="true">
+    <form class="new_task_item" data-remote="true">
       <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
       <input type="hidden" name="task[assignee_id]" value="<%= current_user.id %>">
       <input type="hidden" name="task[list_id]" value="<%= list.id %>">
       <input type="hidden" name="task[color]" value="white">
       <input type="hidden" name="task[position]" value="<%= list.next_id %>">
       <div class="form-group task_item_box">
-          <input type="text" name="task[name]" class="form-control" autocomplete="off">
-            <button type="submit" class="btn btn-neutral task-btn-middle out-btn">
-              <span class="glyphicon glyphicon-plus"></span>
-            </button>
+        <input type="text" name="task[name]" class="form-control" autocomplete="off">
+        <button type="submit" class="btn btn-neutral task-btn-middle out-btn">
+          <span class="glyphicon glyphicon-plus"></span>
+        </button>
       </div>
     </form>
     
