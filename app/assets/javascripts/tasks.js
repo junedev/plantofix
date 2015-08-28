@@ -1,5 +1,7 @@
 $( function(){
 
+  var domain = location.protocol+"//"+window.location.host;
+
   $("body").on("click",".task_edit", function(){
     $(this).parent().siblings(".task_edit_box").show();
     $(this).closest('.task_item').hide();
@@ -15,7 +17,7 @@ $( function(){
         }
       }
       $.ajax({
-        url:'/tasks/'+ui.item.data().id,
+        url: domain+'/tasks/'+ui.item.data().id,
         type:'put',
         dataType: 'json',
         contentType: 'application/json',
@@ -51,14 +53,13 @@ $( function(){
       currentBox.css("backgroundColor", color);
       currentBox.siblings().children(".task_item").css("backgroundColor", color);
       $.ajax({
-        url:'http://localhost:3000/tasks/' + task_id,
+        url: domain + '/tasks/' + task_id,
         type:'put',
         dataType: 'json',
         contentType: 'application/json',
         data: JSON.stringify({task: { color: color}})
-      }).always(function(){
-        $("body").off("click",".color-btn");
       })
+      $("body").off("click",".color-btn");
     });
   });
 
@@ -67,7 +68,7 @@ $("body").on("click",".task_delete", function(){
   var that = this;
   event.preventDefault();
   $.ajax({
-    url:'/tasks/'+$(this).data().id,
+    url: domain +'/tasks/'+$(this).data().id,
     type:'delete'
   }).done(function(){
     $(that).closest("li").remove();   
@@ -78,7 +79,7 @@ $("body").on("submit", ".new_task_item",function(){
   var that = this;
   event.preventDefault();
   $.ajax({
-    url: "/tasks",
+    url: domain + "/tasks",
     type:"post",
     dataType: 'html',
     data: $(this).serialize()
@@ -92,7 +93,7 @@ $("body").on("submit","form.task_edit_box",function(){
   var that = this;
   event.preventDefault();
   $.ajax({
-    url: $(this).attr("action"),
+    url: domain + $(this).attr("action"),
     type: $(this).attr("method"),
     dataType: 'json',
     data: $(this).serialize()
