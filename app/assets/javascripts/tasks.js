@@ -49,6 +49,7 @@ $( function(){
     $("body").on("click",".color-btn",function(){
       var color = $(this).css("backgroundColor");
       currentBox.css("backgroundColor", color);
+      currentBox.siblings().children(".task_item").css("backgroundColor", color);
       $.ajax({
         url:'http://localhost:3000/tasks/' + task_id,
         type:'put',
@@ -74,7 +75,6 @@ $("body").on("click",".task_delete", function(){
 });
 
 $("body").on("submit", ".new_task_item",function(){
-  console.log(this);
   var that = this;
   event.preventDefault();
   $.ajax({
@@ -83,7 +83,6 @@ $("body").on("submit", ".new_task_item",function(){
     dataType: 'html',
     data: $(this).serialize()
   }).done(function(result){
-    console.log("hello2");
     $(that).siblings("ul").append(result);
     $(that).find("input[name='task[name]']").val(null);
   });
