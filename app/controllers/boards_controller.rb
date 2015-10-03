@@ -9,8 +9,8 @@ class BoardsController < ApplicationController
   # GET /boards/1
   def show
     @board = Board.find(params[:id])
-    redirect_to root_path unless @board.users.include?(current_user)
     redirect_to root_path unless logged_in?
+    redirect_to root_path unless @board.users.include?(current_user)
   end
 
   # Save new board to database

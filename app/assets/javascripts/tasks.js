@@ -9,22 +9,25 @@ $( function(){
 
   $(".sortable").sortable({
     connectWith: ".sortable",
-    stop: function(event, ui){
-      var updateData = {
-        task: {
-          list_id: ui.item.parent().data().id,
-          position: new_position(ui.item)
-        }
-      }
-      $.ajax({
-        url: domain+'/tasks/'+ui.item.data().id,
-        type:'put',
-        dataType: 'json',
-        contentType: 'application/json',
-        data: JSON.stringify(updateData)
-      })
-    }
+    stop: updatePosition
   });
+
+  function updatePosition(event, ui){
+    var updateData = { 
+      task: {
+        list_id: ui.item.parent().data().id,
+        position: new_position(ui.item)
+      }
+    }
+
+    $.ajax({
+      url: domain+'/tasks/'+ui.item.data().id,
+      type:'put',
+      dataType: 'json',
+      contentType: 'application/json',
+      data: JSON.stringify(updateData)
+    })
+  }
 
   $('.task_description_modal').on('shown.bs.modal', function () {
   });
