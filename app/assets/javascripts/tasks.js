@@ -65,18 +65,22 @@ $( function(){
 
 
 $("body").on("click",".task_delete", function(){
-  var that = this;
+  var self = this;
   event.preventDefault();
   $.ajax({
     url: domain +'/tasks/'+$(this).data().id,
     type:'delete'
   }).done(function(){
-    $(that).closest("li").remove();   
+    $(self).closest("li").remove();   
   });
 });
 
 $("body").on("submit", ".new_task_item",function(){
-  var that = this;
+  var self = this;
+  if($(this).siblings("ul").children("li").length){
+    var pre = parseInt($(this).siblings("ul").children("li").last().data().position);
+    $(this).find("input[name='task[position]']").val(pre+1);
+  }
   event.preventDefault();
   $.ajax({
     url: domain + "/tasks",
@@ -84,13 +88,13 @@ $("body").on("submit", ".new_task_item",function(){
     dataType: 'html',
     data: $(this).serialize()
   }).done(function(result){
-    $(that).siblings("ul").append(result);
-    $(that).find("input[name='task[name]']").val(null);
+    $(self).siblings("ul").append(result);
+    $(self).find("input[name='task[name]']").val(null);
   });
 });
 
 $("body").on("submit","form.task_edit_box",function(){
-  var that = this;
+  var self = this;
   event.preventDefault();
   $.ajax({
     url: domain + $(this).attr("action"),
@@ -98,9 +102,9 @@ $("body").on("submit","form.task_edit_box",function(){
     dataType: 'json',
     data: $(this).serialize()
   }).done(function(result){
-    $(that).hide();
-    $(that).siblings('.task_item').children("p").html(result.name);
-    $(that).siblings('.task_item').show();
+    $(self).hide();
+    $(self).siblings('.task_item').children("p").html(result.name);
+    $(self).siblings('.task_item').show();
   });
 });
 
@@ -115,25 +119,20 @@ function find_list_id(array){
 }
 
 function new_position($item){
-  var pos1 = 0;
-  var pos2 = 0;
-  if($item.prev().length > 0){
-    pos1=parseFloat($item.prev().data().state);
+  var pre = 0;
+  var succ = 0;
+  var current_pos = parseFloat($item.data().position);
+
+  if($item.prev().length){
+    pre=parseFloat($item.prev().data().position);
   }
-  if($item.next().length > 0){
-    pos2=parseFloat($item.next().data().state);
+  if($item.next().length){
+    succ=parseFloat($item.next().data().position);
   }
 
-  var current_pos = parseFloat($item.data().state);
-
-  if(pos1+pos2 === 0){
-    return current_pos;
-  } else if(pos1 === 0){
-    return pos2/2;
-  } else if(pos2 === 0) {
-    return (pos1 + 1.0);
-  } else {
-    return (parseFloat(pos1) + parseFloat(pos2))/2;
-  }
+  if(pre+succ === 0) return current_pos;
+  if(pre === 0) return succ/2;
+  if(succ === 0) return (pre + 1.0);
+  return (parseFloat(pre) + parseFloat(succ))/2;
 }
 

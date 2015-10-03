@@ -33,3 +33,7 @@ bower.json
 
 # Ignore pow environment settings
 .powenv
+
+ToDo.md
+set_up_rails_app.md
+project-02.md

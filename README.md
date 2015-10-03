@@ -3,16 +3,11 @@ Project 2 WDI14 LDN - Task planning tool
 
 ### How to use the app
 
-Go to the [website](plantofix.herokuapp.com) and sign-up for the app to be able to start using it. After login you see all your boards.
+Go to the [website](plantofix.herokuapp.com) and sign-up for the app to be able to start using it. After login you see all your boards. Clicking on a board let's you see the lists with all the taks on it.
+Tasks can be sorted and moved between lists. They can be easily edited and if you want, you can even add extensive notes to a task.
+A couple of colors ranging from green to red can be choosen for the tasks to indicate importance or what you are allowed to do first.
 
 ![](./app/assets/images/screenshot3.png)
-
-Clicking on a board let's you see the lists with all the taks on it.
-
-![](./app/assets/images/screenshot1.png)
-
-Tasks can be sorted and moved between lists. They can be easily edited and if you want, you can even add extensive notes to a task.
-A couple of preset colors from green to red can be choosen for the tasks to indicate importance or what you are allowed to do first.
 
 If you want to work together with other users on a board you can create teams of users and create a new board for that team. You can always delete or add team members afterwards.
 
