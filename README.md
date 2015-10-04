@@ -3,7 +3,7 @@
 
 https://plantofix.herokuapp.com
 
-![Screenshot](./assets/images/plantofix.png)
+![Screenshot](./app/assets/images/plantofix.png)
 
 ## Description
 On the <a href="http://plantofix.herokuapp.com" target="_blanck">website</a> you can sign-up or log in to use the app. After you are logged in you can see all your boards with the lists they contain. Boards are seperated by private and shared boards.
@@ -12,15 +12,15 @@ Tasks can be sorted and moved between lists. They can be easily edited and if yo
 A couple of preset colors from green to red can be choosen for the tasks to indicate importance or what you are allowed to do first.
 If you want to add more than just a short task name you can open a modal to enter extensive notes for each task.
 
-![Plantofix Boards](./assets/images/plantofix3.png)
+![Plantofix Boards](./app/assets/images/plantofix3.png)
 
 If you want to work together with other users on a board you can create teams of users and create a new board for this team. You can always delete or add team members later on.
 
-![Plantofix Teams](./assets/images/plantofix2.png)
+![Plantofix Teams](./app/assets/images/plantofix2.png)
 
 As an additional gimmick, you can also import issues including their description and label color from any public GitHub repository.
 
-![Plantofix Import](./assets/images/plantofix4.png)
+![Plantofix Import](./app/assets/images/plantofix4.png)
 
 ## Inspiration
 The original task was to build a Rails app with 2 or more RESTful resources. I was a bit tired of the usual exercise of having a user resource and then blog posts, pictures, videos or something similar associated with them. So I decided to do something a little different. I always liked the mechanics of <a href="https://trello.com/" target="_blanck">Trello</a> but I found it quite overloaded with features. So I did to do a planning tool on my own.
