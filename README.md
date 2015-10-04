@@ -3,7 +3,7 @@
 
 https://plantofix.herokuapp.com
 
-![Screenshot](./app/assets/images/plantofix.png)
+![Screenshot](./app/assets/images/plantofix1.png)
 
 ## Description
 On the <a href="http://plantofix.herokuapp.com" target="_blanck">website</a> you can sign-up or log in to use the app. After you are logged in you can see all your boards with the lists they contain. Boards are seperated by private and shared boards.
