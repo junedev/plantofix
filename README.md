@@ -118,6 +118,9 @@ The markup is written with ERB. This comes in very handy combined with Rails abi
 ```
 
 ### Styling
+Before starting with actual coding and styling, I did low fidelity wireframes to sort out which functionality will appear on which screen/ belongs to which partial. I used <a href="https://balsamiq.com/" target="_blanck">Balsamiq</a> although I was not entirely satisfied with the program itself.
+![Plantofix Wireframe](-/app/assets/images/wireframes.png)
+
 The SASS version of <a href="#" target="_blanck">Bootstrap</a> is used as CSS framework for this project. That way, customization is very convenient when set up correctly in the first place. Variable overrides can be defined the `application.scss` file or a separate file that is then imported. Afterwards the Bootstrap SCSS files have to be imported and finally all the custom style files.
 With Bootstrap's navbar and grid system (column number depending on screen-width etc.) the app is quite responsive but there are still a couple of screen sizes for which the styling needs to be improved.
 
